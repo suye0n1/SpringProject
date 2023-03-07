@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suyeon.mapper.BoardMapper">
+<!-- 	리스트 -->
+	<select id="list" resultType="com.suyeon.dto.BoardDto">
+		select * from spring_board where category = #{category};
+	</select>
+<!-- 	읽기 -->
+	<select id="read" resultType="com.suyeon.dto.BoardDto">
+		select * from spring_board where num = #{num};
+	</select>
+<!-- 	조회수 -->
+	<update id="viewCount">
+		update spring_board set hits = hits+1 where num = #{num};
+	</update>
+<!-- 	삭제 -->
+	<delete id="del">
+	delete from spring_board where num = #{num};
+	</delete>
+<!-- 	쓰기 -->
+	<insert id="write">
+		insert into spring_board (title, content, category) values (#{title}, #{content}, #{category});
+	</insert>
+<!-- 	수정 -->
+	<update id="modify">
+		update spring_board set title = #{title} , content = #{content}, category = #{category} where num = #{num};
+	</update>
+</mapper>
