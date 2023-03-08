@@ -12,6 +12,8 @@ public class MemberDto {
 	private String pw_ch;
 	private String name;	
 	private String email;
+	private String postcode;
 	private String address;
+	private String detailAddress;	
 	
 }
