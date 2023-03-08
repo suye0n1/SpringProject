@@ -10,7 +10,7 @@
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07c29e6e2a0b7d1f4b8bdd99f49d6fab&libraries=services"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 
 <script>
 	function fn_joinMember() {
@@ -205,8 +205,6 @@
 			        }
 			    }).open();
 			}
-
-
 			</script>
 		</table>
 		<table>
@@ -378,12 +376,6 @@
 					</div> <label> <input type="checkbox" name="agree" value=true
 						required>동의합니다<br>
 				</label>
-<!-- 					<h2>개인정보동의</h2> -->
-<!-- 					<div style="border: 1px solid #ccc"> -->
-<!-- 						<p>=======================================개인정보동의================================================</p> -->
-<!-- 					</div> <label> <input type="checkbox" name="agree" value=true -->
-<!-- 						required>동의합니다<br> -->
-<!-- 				</label> -->
 				</td>
 			</tr>
 			<tr>
