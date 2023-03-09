@@ -16,6 +16,6 @@
 	</select>
 <!-- 	로그인 -->
 	<select id="login" resultType="com.suyeon.dto.MemberDto" parameterType="map">
-		select * from member where user_id = #{user_id} and passwd = #{passwd};
+		select * from member where user_id = #{user_id};
 	</select>
 </mapper>

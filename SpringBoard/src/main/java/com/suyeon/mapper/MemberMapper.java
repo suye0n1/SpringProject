@@ -14,6 +14,6 @@ public interface MemberMapper {
 	//2.인터페이스에는 @Param
 	//Service에는 안써줘도 됨
 	public int idCheck(@Param("user_id") String user_id);
-	public MemberDto login(@Param("user_id") String user_id, @Param("passwd") String passwd);
+	public MemberDto login(@Param("user_id") String user_id);
 }
 

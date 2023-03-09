@@ -48,5 +48,6 @@ function fn_login(){
 		</tr>
 		</table>
 	</form>
+	<a href="/">홈</a>
 </body>
 </html>

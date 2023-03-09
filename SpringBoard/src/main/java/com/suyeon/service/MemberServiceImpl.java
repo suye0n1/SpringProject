@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberDto login(String user_id,String passwd) {
-		return mapper.login(user_id, passwd);
+	public MemberDto login(String user_id) {
+		return mapper.login(user_id);
 	}
 }
