@@ -30,7 +30,7 @@ function fn_login(){
 </head>
 <body>
 	<h1>로그인</h1>
-	${login.user_id}
+<%-- 	${login.user_id} 로그인 세션--%>
 	<form name="loginForm" method="get" onsubmit="return false;">	<%-- onsubmit="return false; ㅡ>자동 submit 방지 /안해주면 fomr이 제출되면서 컨트롤러로 넘어가고 컨트롤러가 실행되면서 list.jsp로 감 --%>
 		<table>
 		<tr>

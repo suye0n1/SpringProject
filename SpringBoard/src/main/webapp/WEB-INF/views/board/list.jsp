@@ -20,11 +20,9 @@
 	// 		Long hits = list.get(i).getHits(); 
 	//  		String dt = list.get(i).getDt();
 	%>
-
 	<h1>게시판 목록</h1>
 	<hr>
-	${login.user_id}
-	<a href="/member/logout">로그아웃</a>
+	${login_user.user_id}<a href="/member/logout">로그아웃</a>
 	<table>
 		<tr>
 			<td>카테고리</td>

@@ -1,6 +1,5 @@
 package com.suyeon.spring.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.suyeon.dto.BoardDto;
 import com.suyeon.service.BoardService;
@@ -20,7 +18,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/board/*")
 @AllArgsConstructor
-@SessionAttributes("login") // 로그인, 카테고리 세션
+//@SessionAttributes("login") // 로그인, 카테고리 세션
 @Controller
 public class BoardController {
 
