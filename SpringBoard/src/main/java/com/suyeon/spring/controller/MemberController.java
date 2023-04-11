@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -93,6 +94,14 @@ public class MemberController {
 		return "/member/idCheck"; // redirect 사용하면 컨트롤러를 거치고 안하면 jsp파일로 이동
 	}
 
+	//이메일 인증
+	@GetMapping("/mailCheck")
+	@ResponseBody	//view페이지가 아닌 반환값을 그대로 클라이언트한테 return하고 싶을 경우
+	public String mailCheck(String email) {
+		System.out.println("인증 이메일:"+email);
+		return email;
+	}
+	
 	// 3.로그인 화면
 	@GetMapping("/login")
 	public void login() {

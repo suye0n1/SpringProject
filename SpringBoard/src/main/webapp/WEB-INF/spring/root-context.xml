@@ -54,6 +54,4 @@
 
 	<context:component-scan base-package="com.suyeon.service">
 	</context:component-scan>
-
-	
 </beans>

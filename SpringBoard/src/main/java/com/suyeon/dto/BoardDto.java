@@ -13,4 +13,10 @@ public class BoardDto {
 	private Long hits;	
 	private String dt;
 	private String category;
+	
+	//이미지 업로드
+	private String uploadPath;
+	private String uuid;
+	private String FileName;
+	private int bookId;
 }
