@@ -13,11 +13,13 @@ import java.util.UUID;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,9 +84,9 @@ public class BoardController {
 	
 	
 	//이미지 업로드
-	@PostMapping(value="/write", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value="/upload", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	//반환 타입이 ResponseEntity객체이고 Http의 Body에 추가될 데이터는 <List<AttachImageDto>이다 
-	public ResponseEntity<List<BoardDto>> write(MultipartFile[] uploadFile) {
+	public ResponseEntity<List<BoardDto>> upload(MultipartFile[] uploadFile) {
 		
 //		파일을 저장할 기본적 경로를 저장하는 변수 선언&초기화
 //		이미지 파일이 맞는지 체크
@@ -186,7 +188,30 @@ public class BoardController {
 		ResponseEntity<List<BoardDto>> result = new ResponseEntity<List<BoardDto>>(list, HttpStatus.OK);
 		return result;
 	}
-
+	
+	@GetMapping("/display")
+	public ResponseEntity<byte[]> getImage(String fileName){
+		//기본 경로 문자열 데이터 + 유동 경로 + 파일 이름
+		File file = new File("c:\\upload\\" + fileName);
+		//ResponseEntity객체의 주소를 저장할 참조 변수 선언
+		ResponseEntity<byte[]> result = null;
+		try {
+			
+			HttpHeaders header = new HttpHeaders();
+			//대상 이미지 파일의 MIME TYPE를 얻기 위해 probeContentType() 사용
+			//header의 Content-type 속성 값에 이미지 파일 MIME TYPE를 추가해주기 위해 HttpHeaders클래스에 있는 add()메서드 사용
+			//add(Response header의 속성명, 해당 속성명에 부여할 값)
+			header.add("Content-type", Files.probeContentType(file.toPath()));
+			//ResponseEntity 참조 변수에 대입 (대상 이미지 파일, header객체, 상태 코드) 
+			//copyToByteArray(): 대상 파일(파라미터로 부여한 File)을 복사하여 Byte 배열로 반환해주는 클래스
+			//상태 코드: 코드 200이 전송되도록 인자 값 작성
+			result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	// 수정
 	@PostMapping("/modify")
 	public String modify(BoardDto dto, @RequestParam("category") String category) {

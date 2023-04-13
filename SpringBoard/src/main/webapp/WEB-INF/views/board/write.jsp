@@ -46,9 +46,9 @@
 		
 		//if 조건문에는 fileCheck()메서드와 not논리 연산자 작성,구현부에는 return false를 작성
 		//이렇게 하면 메서드가 false를반환 했을 때 not연산자로 인해 ture로 값이 변경되어 실행됨
-// 		if(!fileCheck(fileObj.name, fileObj.size)){
-// 			return false;
-// 		}
+		if(!fileCheck(fileObj.name, fileObj.size)){
+ 			return false;
+		}
 // 		 <input> name과 Controller의 url 매핑 메서드의 매개변수 이름과 동일하게 해주었듯이
 // 		 key와 추후 추가할 url 매핑 메서드의 매개변수명이 동일
 //		파일 한 개만 저장

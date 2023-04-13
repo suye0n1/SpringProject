@@ -18,9 +18,8 @@
 
 
 							<article class="box page-content">
-
 								<section>
-									
+									${login_user.user_id}<a href="/member/logout">로그아웃</a>
 									<table>
 										<tr>
 											<td>카테고리</td>

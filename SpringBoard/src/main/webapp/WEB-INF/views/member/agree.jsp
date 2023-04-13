@@ -9,7 +9,7 @@
 <body>
 <h2>이용약관</h2>
 					<div style="border: 1px solid #ccc">
-						<textarea rows="20" cols="180" readonly>
+						<textarea rows="20" cols="115" readonly>
 						제1조(목적)
 
 본 회원약관은 AcAT(이하 '갑'라 한다)이 운영하는 인터넷관련 서비스(이하 '서비스'라 한다)를 이용함에 있어 관리자와 이용자(이하 '회원'라 한다)의 권리, 의무 및 책임사항을 규정함을 목적으로 한다.
