@@ -23,8 +23,8 @@
 							maxlength="12" onkeydown="inputIdCheck()" />
 					</div>
 					<div>
-						<button class="email_ch_button" type="button"
-							onclick="fn_dbIdCheck()" name="dbIdCheck">중복 확인</button>
+						<button class="id_ch_button" type="button"
+							onclick="fn_dbIdCheck(event)" name="dbIdCheck">중복 확인</button>
 						<input type="hidden" name="idDuplication" value="idUncheck" />
 					</div>
 
@@ -105,68 +105,12 @@
 		</form>
 	</div>
 
-	<%-- <table cellpadding="10">
-			<tr>
-				<th>아이디</th>
-				<td><input type="text" name="user_id" required maxlength="12"
-					onkeydown="inputIdCheck()" />
-					<button type="button" onclick="fn_dbIdCheck()" name="dbIdCheck">중복
-						확인</button> <input type="hidden" name="idDuplication" value="idUncheck" />
-				</td>
-			</tr>
-
-			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name='passwd' required
-					maxlength="15"><br></td>
-			</tr>
-
-			<tr>
-				<th>비밀번호 확인</th>
-				<td><input type="password" name="pw_ch" required maxlength="15"><br></td>
-			</tr>
-			<tr>
-				<th>이름</th>
-				<td><input type="text" name='name' required><br></td>
-			</tr>
-			<tr>
-				<th>이메일</th>
-				<td><input type="text" name='email' id='email' required><br>
-					<!-- 				<button type="button" id='mail_check_btn'>인증번호 받기</button><br> -->
-					<input type="text" placeholder="인증번호 입력" class='email_auth_key'
-					name='email_key' required maxlength="6">
-					<button type="button">인증번호 전송</button></td>
-			</tr>
-			<tr>
-				<th>주소</th>
-				<td><input type="text" id="sample6_postcode" name="postcode"
-					placeholder="우편번호"> <input type="button"
-					onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample6_address" name="address"
-					placeholder="주소"><br> <input type="text"
-					id="sample6_detailAddress" name="detailAddress" placeholder="상세주소">
-					<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-					<div id="map"
-						style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
-				</td>
-			</tr>
-
-		</table>
-		<table>
-			<tr>
-				<td><%@include file="/WEB-INF/views/member/agree.jsp"%>
-				</td>
-			</tr>
-			<tr>
-				<td><button onclick="fn_joinMember()">회원가입</button></td>
-			</tr>
-		</table> --%>
-
 	<script>
 
 		var code = ""; //Controller로부터 전달받은 인증번호를 뷰에 저장하는 코드 추가
-
-		$(".email_ch_button").click(function(){
+		
+		$(".email_ch_button").click(function(event){
+				event.preventDefault(); //폼태그 안에 있는 button태그는 submit기능을 하기 때문에 preventDefault메소드를 사용해주기
 				var email = $(".email_input").val();	//이메일 주소값 얻어오기
 				console.log('완성된 이메일:'+ email);	//이메일 오는지 확인
 				var checkBox = $(".email_ch_input"); //인증번호 입력란
@@ -186,7 +130,7 @@
 				});//end ajax
 			});
 				
-//인증번호 비교 .blur()메서드는 선택한 요송서 포커스를 잃을 때 실행되는 이벤트 핸들러
+//인증번호 비교 .blur()메서드는 선택한 요소에서 포커스를 잃을 때 실행되는 이벤트 핸들러
 $(".email_ch_input").blur(function(){
 	var inputCode = $(".email_ch_input").val();	//입력코드
 	var checkResult = $("#email_ch_input_box_warn"); //비교 결과
@@ -200,7 +144,7 @@ $(".email_ch_input").blur(function(){
 	}
 
 });
-			
+
 			</script>
 	<!-- 	script -->
 	<script

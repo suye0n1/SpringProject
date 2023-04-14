@@ -10,20 +10,15 @@
 </head>
 <body>
 
-	<form action="/board/write" method="post" enctype="multipart/form-data">
-		<%-- enctype="multipart/form-data" 파일 가져오기 위한 작업
-			form태그에 데이터를 저장하여 서버로 전송할 때는 기본값인 'application/x-www-form-urlencoded'이 사용
-			하지만 파일과 같은 데이터를 주고 받기 위해서는 enctype속성값이 'multipart/form-data'이어야함
-		--%>
+	<form action="/board/write" method="post">
 		<input type="hidden" name='category' value="${category}"> <input
 			name='title' placeholder="글 제목">
 		<textarea rows="5" name='content' placeholder="글 내용을 입력하세요"></textarea>
-	<input type="file" multiple id="fileItem" name='uploadFile' style="height: 30px;"> 
-		<input type="submit" value="제출">
+		<input type="file" multiple id="fileItem" name='uploadFile'
+			style="height: 30px;"> 
+			<input type="submit" value="제출">
+
 	</form>
-	
-<!-- 	script -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<script type="text/javascript">
 	/* 이미지 업로드 */
@@ -60,7 +55,7 @@
 // 		서버로 전송하는 코드
 //		processData와 contentType의 경우 속성 값을 false로 해주여야만 첨부파일이 서버로 전송됨
 		$.ajax({
-			url: '/board/write'	//서버로 요청을 보낼 url
+			url: '/board/upload'	//서버로 요청을 보낼 url
 			processData : false,	//서버로 전송할 데이터를 queryString 형태로 변환할지 여부
 			contentType : false,	//서버로 전송되는 데이터의 content-type
 			data : formData,	//서버로 전송할 데이터
@@ -96,5 +91,8 @@
 		
 	}
 	</script>
+	
+		<!-- 	script -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

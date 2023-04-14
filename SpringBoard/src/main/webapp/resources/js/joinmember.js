@@ -40,7 +40,8 @@ function fn_joinMember() {
     joinForm.submit();
 }
 
-function fn_dbIdCheck() {
+function fn_dbIdCheck(event) {
+	event.preventDefault();
     var joinForm = document.joinForm;
     var user_id = joinForm.user_id.value;
     if (user_id == 0 || user_id == "") {

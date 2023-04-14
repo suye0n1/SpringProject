@@ -7,7 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-function sendCheckValue(){
+function sendCheckValue(event){
+	event.preventDefault();
 	var openJoinForm = opener.document.joinForm;	
 	if(document.idCheckForm.chResult.value == "N"){
 		alert("다른 아이디를 입력해주세요.");
@@ -39,7 +40,7 @@ function sendCheckValue(){
 		</c:when>
 		</c:choose>
 		<input type="button" onclick="window.close()" value="취소" />
-		<input type="button" onclick="sendCheckValue()" value="사용하기" />
+		<input type="button" onclick="sendCheckValue(event)" value="사용하기" />
 	</form>
 </body>
 </html>
