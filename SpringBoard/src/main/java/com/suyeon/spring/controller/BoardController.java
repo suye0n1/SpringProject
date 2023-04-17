@@ -85,8 +85,7 @@ public class BoardController {
 	
 	//이미지 업로드
 	@PostMapping(value="/upload", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	//반환 타입이 ResponseEntity객체이고 Http의 Body에 추가될 데이터는 <List<AttachImageDto>이다 
-	public ResponseEntity<List<BoardDto>> upload(MultipartFile[] uploadFile) {
+	public ResponseEntity<List<BoardDto>> upload(MultipartFile[] uploadFile) {		//반환 타입이 ResponseEntity객체이고 Http의 Body에 추가될 데이터는 <List<AttachImageDto>이다 
 //		파일을 저장할 기본적 경로를 저장하는 변수 선언&초기화
 //		이미지 파일이 맞는지 체크
 		for(MultipartFile multipartFile: uploadFile) {

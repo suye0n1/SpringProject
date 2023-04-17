@@ -144,6 +144,7 @@ public class MemberController {
 	public void login() {
 
 	}
+
 	// 4.로그인 체크&확인(암호화하기 전 코드)
 //	@GetMapping("/login_check")
 //	public String login(@RequestParam("user_id") String user_id, @RequestParam("passwd") String passwd, Model model) {
