@@ -41,12 +41,12 @@ select count(*) from likes where num = #{num} and user_id = #{user_id}
 </insert>
 
 <!-- 	게시글 추천수 -->
-<update id="updateLike" parameterType="int">
+<update id="updateLike" >
 update spring_board set like_count = like_count + 1 where num = #{num}
 </update>
 
 <!-- 	게시글 추천수 취소 -->
-<update id="updateLikeCancel" parameterType="int">
+<update id="updateLikeCancel" >
 update spring_board set like_count = like_count - 1 where num = #{num}
 </update>
 
@@ -58,12 +58,12 @@ delete from likes where num = #{num} and user_id = #{user_id}
 </delete>
 
 <!-- 게시글 추천 시 Check를 1로 만들어서 중복 방지 -->
-<update id="updateLikeCheck" parameterType="map">
+<update id="updateLikeCheck" >
 update likes set like_check = 1 where num = #{num} and user_id = #{user_id}
 </update>
 
 <!-- 게시글 추천 취소 시 다시 0 -->
-<update id="updateLikeCheckCancel" parameterType="map">
+<update id="updateLikeCheckCancel">
 update likes set like_check = 0 where num = #{num} and user_id = #{user_id}
 </update>
 	
