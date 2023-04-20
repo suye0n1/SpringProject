@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class BoardDto {
-	private Long num;
+	private int num;
 	private String title;
 	private String content;
 	private String id;
@@ -13,10 +13,17 @@ public class BoardDto {
 	private Long hits;	
 	private String dt;
 	private String category;
+	private int like_count;
 	
 	//이미지 업로드
 	private String uploadPath;
 	private String uuid;
 	private String FileName;
 	private int bookId;
+
+	//좋아요
+	private int like_no;
+	private String user_id;
+	private int like_check;
 }
+

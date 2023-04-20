@@ -1,6 +1,5 @@
 package com.suyeon.mapper;
 
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 

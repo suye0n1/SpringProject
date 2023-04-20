@@ -27,4 +27,44 @@
 	<update id="modify">
 		update spring_board set title = #{title} , content = #{content}, category = #{category} where num = #{num};
 	</update>
+	
+	<!--========= 좋아요 =============-->
+	
+<!-- 게시글 추천 중복 방지 select문 -->
+<select id="likeCheck" parameterType="map" resultType="int">
+select count(*) from likes where num = #{num} and user_id = #{user_id}
+</select>
+
+<!-- 게시글 추천 시  like 테이블에 insert -->
+<insert id="insertLike" parameterType="com.suyeon.dto.BoardDto">
+  insert into likes(num, user_id) values (#{num}, #{user_id});
+</insert>
+
+<!-- 	게시글 추천수 -->
+<update id="updateLike" parameterType="int">
+update spring_board set like_count = like_count + 1 where num = #{num}
+</update>
+
+<!-- 	게시글 추천수 취소 -->
+<update id="updateLikeCancel" parameterType="int">
+update spring_board set like_count = like_count - 1 where num = #{num}
+</update>
+
+
+
+<!-- 게시글 추천 취소 시 delete -->
+<delete id="deleteLike">
+delete from likes where num = #{num} and user_id = #{user_id}
+</delete>
+
+<!-- 게시글 추천 시 Check를 1로 만들어서 중복 방지 -->
+<update id="updateLikeCheck" parameterType="map">
+update likes set like_check = 1 where num = #{num} and user_id = #{user_id}
+</update>
+
+<!-- 게시글 추천 취소 시 다시 0 -->
+<update id="updateLikeCheckCancel" parameterType="map">
+update likes set like_check = 0 where num = #{num} and user_id = #{user_id}
+</update>
+	
 </mapper>

@@ -23,7 +23,9 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.suyeon.dto.BoardDto;
@@ -65,6 +67,25 @@ public class BoardController {
 		return "redirect:/board/list?category="+category;
 	}
 
+//	좋아요
+	@ResponseBody
+	@RequestMapping(value = "/board/updateLike", method = RequestMethod.GET)
+	public int updateLike(@RequestParam("num") int num, @RequestParam("user_id") String user_id) {	
+		int likeCheck = service.likeCheck(num, user_id);
+		System.out.println("========"+service.likeCheck(num, user_id)+"========");
+		if(likeCheck == 0) {
+			//좋아요 처음누름
+			service.insertLike(num, user_id); //like테이블 삽입
+			service.updateLike(num);	//게시판테이블 +1
+			service.updateLikeCheck(num, user_id);//like테이블 구분자 1
+		}else if(likeCheck == 1) {
+			service.updateLikeCheckCancel(num, user_id); //like테이블 구분자0
+          service.updateLikeCancel(num); //게시판테이블 - 1
+			service.deleteLike(num, user_id); //like테이블 삭제
+		}
+		return likeCheck;
+	}
+	
 //	쓰기 화면 출력
 	@GetMapping("/write")
 	public void write(@RequestParam("category") String category, Model model) {
@@ -210,6 +231,10 @@ public class BoardController {
 		}
 		return result;
 	}
+	
+
+
+	
 	
 	// 수정
 	@PostMapping("/modify")

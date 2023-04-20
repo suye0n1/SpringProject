@@ -11,4 +11,12 @@ public interface BoardService {
 	public void write(BoardDto dto);
 	public void modify(BoardDto dto);
 	
+	public int likeCheck(int num, String user_id);
+	public void insertLike(int num, String user_id);
+	public void updateLike(int num);
+	public void updateLikeCheck(int num, String user_id);
+	public void updateLikeCheckCancel(int num, String user_id);
+	public void updateLikeCancel(int num);
+	public void deleteLike(int num, String user_id);
+	
 }

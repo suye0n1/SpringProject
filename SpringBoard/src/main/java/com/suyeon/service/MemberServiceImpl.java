@@ -1,8 +1,6 @@
 package com.suyeon.service;
 
-import java.util.List;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,9 +9,7 @@ import com.suyeon.dto.MemberDto;
 import com.suyeon.mapper.MemberMapper;
 
 import lombok.Setter;
-import lombok.extern.log4j.Log4j;
 
-@Log4j
 @Service
 public class MemberServiceImpl implements MemberService{
 	@Setter(onMethod_ = @Autowired) 
@@ -35,5 +31,8 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.login(user_id);
 	}
 	
+	
 
+	
+	
 }
