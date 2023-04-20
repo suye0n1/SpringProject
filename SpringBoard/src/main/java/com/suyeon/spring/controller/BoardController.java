@@ -232,15 +232,12 @@ public class BoardController {
 		return result;
 	}
 	
-
-
-	
-	
 	// 수정
 	@PostMapping("/modify")
 	public String modify(BoardDto dto, @RequestParam("category") String category) {
 		service.modify(dto);
 		return "redirect:/board/list?category="+category;
 	}
+
 	
 }

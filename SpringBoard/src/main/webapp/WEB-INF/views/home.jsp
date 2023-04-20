@@ -13,6 +13,7 @@
 		<ul>
 			<li><a href="/board/list?category=free_2">게시판1</a></li>
 			<li><a href="/board/list?category=free_2">게시판2</a></li>
+			<li><a href="/reservation/calendar">달력</a></li>
 			<li><a href="/member/join">회원가입</a></li>
 			<li><a href="/member/login">로그인</a></li>
 			<li>${login_user.user_id}<a href="/member/logout">로그아웃</a></li>
