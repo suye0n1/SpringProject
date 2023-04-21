@@ -243,6 +243,7 @@
 				.getDate());
 		buildCalendar();
 	}
+	
 </script>
 <body>
 	<div class="mainBox">

@@ -15,4 +15,9 @@ public class reservationController {
 	public void calendar() {
 		
 	}
+	
+	@GetMapping("/exercise")
+	public void exercise() {
+		
+	}
 }
