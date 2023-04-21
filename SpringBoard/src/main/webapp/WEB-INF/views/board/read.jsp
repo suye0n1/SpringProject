@@ -31,7 +31,6 @@
 	<div style="margin-right: 1px;">
 		<button type="button" class="btn btn-warning " id="like_btn"
 			onclick="updateLike();">추천 ${read.like_count}</button>
-		<button type="button" class="btn btn-danger" id="hate_btn">비추천</button>
 	</div>
 <!-- 	return false; -->
 	<div style="margin-top: 1000px;">
@@ -46,7 +45,6 @@
 				class="button">수정</a></li>
 		</ul>
 	</div>
-	
 	<script>
 		var num = "${read.num}";
 		console.log("============"+num+"=========");
