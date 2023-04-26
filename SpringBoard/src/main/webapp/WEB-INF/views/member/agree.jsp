@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>이용약관</h2>
+<h4>이용약관</h4>
 					<div style="border: 1px solid #ccc">
 						<textarea rows="20" cols="115" readonly>
 						제1조(목적)

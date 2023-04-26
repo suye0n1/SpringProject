@@ -5,48 +5,76 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <!--
-	TXT by HTML5 UP
+	Alpha by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 <head>
-<meta charset="utf-8">
-
+<title>Elements - Alpha by HTML5 UP</title>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="/resources/assets/css/main.css" />
 </head>
-<body>
+<body class="is-preload">
+	<div id="page-wrapper">
+		<!-- Header -->
+		<%@include file="/WEB-INF/views/headerbar.jsp"%>
+		<!-- Main -->
+		<section id="main" class="container">
+			<header>
+				<h2>BOARD</h2>
+				<p>Just an assorted selection of elements.</p>
+			</header>
 
+			<div class="row">
+				<div class="col-12">
 
-							<article class="box page-content">
-								<section>
-									${login_user.user_id}<a href="/member/logout">로그아웃</a>
-									<table>
+					<!-- Table -->
+					<section class="box">
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>번호</th>
+										<th>제목</th>
+										<th>아이디</th>
+										<th>조회수</th>
+										<th>작성시간</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="i" items="${list}">
 										<tr>
-											<td>카테고리</td>
-											<td>번호</td>
-											<td>제목</td>
-											<td>아이디</td>
-											<td>조회수</td>
-											<td>작성시간</td>
+											<td>${i.num}</td>
+											<td><a
+												href="/board/read?num=${i.num}&category=${i.category}">${i.title}</a></td>
+											<td>${i.id}</td>
+											<td>${i.hits}</td>
+											<td>${i.dt}</td>
 										</tr>
-										<c:forEach var="i" items="${list}">
-											<tr>
-												<td>${i.category}</td>
-												<td>${i.num}</td>
-												<td><a
-													href="/board/read?num=${i.num}&category=${i.category}">${i.title}</a></td>
-												<td>${i.id}</td>
-												<td>${i.hits}</td>
-												<td>${i.dt}</td>
-											</tr>
-										</c:forEach>
-									</table>
-									<ul class="actions" style="margin-left: 800px;">
-											<li><a href="/board/write?category=${category}" class="button">글쓰기</a></li>
-										</ul>
-								</section>
-							</article>
+									</c:forEach>
+								</tbody>
+							</table>
 
+						</div>
+					</section>
+				</div>
+				<div style="margin-left: 1000px;">
+					<a href="/board/write?category=${category}" class="button">글쓰기</a>
+				</div>
+			</div>
+		</section>
+	</div>
 
+	<!-- Scripts -->
+	<script src="/resources/assets/js/jquery.min.js"></script>
+	<script src="/resources/assets/js/jquery.dropotron.min.js"></script>
+	<script src="/resources/assets/js/jquery.scrollex.min.js"></script>
+	<script src="/resources/assets/js/browser.min.js"></script>
+	<script src="/resources/assets/js/breakpoints.min.js"></script>
+	<script src="/resources/assets/js/util.js"></script>
+	<script src="/resources/assets/js/main.js"></script>
 </body>
 </html>

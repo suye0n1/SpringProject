@@ -5,23 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <title>회원가입</title>
-<link rel="stylesheet" href="/resources/css/join.css" />
+<link rel="stylesheet" href="/resources/assets/css/join.css" />
+<link rel="stylesheet" href="/resources/assets/css/main.css" />
 </head>
-<body>
+<body class="is-preload">
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<%@include file="/WEB-INF/views/headerbar.jsp"%>
+		
 	<div class="wrapper">
 		<form name="joinForm" method="post" onsubmit="return false;">
 			<div class="wrap">
-				<div class="subject">회원가입</div>
+				<div class="subject"><h2>회원가입</h2></div>
 				<!-- 	아이디 -->
 				<div class="id_wrap">
 					<div class="id_name">아이디</div>
-					<div class="id_input_box">
-						<input class="id_input" type="text" name="user_id" required
+<!-- 					<div class="id_input_box"> -->
+						<input class="id_input"  type="text" name="user_id" required
 							maxlength="12" onkeydown="inputIdCheck()" />
-					</div>
+<!-- 					</div> -->
 					<div>
 						<button class="id_ch_button" type="button"
 							onclick="fn_dbIdCheck(event)" name="dbIdCheck">중복 확인</button>
@@ -32,38 +40,38 @@
 				<!-- 	비밀번호 -->
 				<div class="password_wrap">
 					<div class="password_name">비밀번호</div>
-					<div class="password_input_box">
+<!-- 					<div class="password_input_box"> -->
 						<input class="pw_input" type="password" name='passwd' required
 							maxlength="15">
-					</div>
+<!-- 					</div> -->
 				</div>
 				<!-- 	비밀번호 확인 -->
 				<div class="pwck_wrap">
 					<div class="pwck_name">비밀번호 확인</div>
-					<div class="pwck_input_box">
+<!-- 					<div class="pwck_input_box"> -->
 						<input class="pwck_input" type="password" name="pw_ch" required
 							maxlength="15">
-					</div>
+<!-- 					</div> -->
 				</div>
 				<!-- 	 이름 -->
 				<div class="user_wrap">
 					<div class="user_name">이름</div>
-					<div class="user_input_box">
+<!-- 					<div class="user_input_box"> -->
 						<input class="user_input" type="text" name='name' required>
-					</div>
+<!-- 					</div> -->
 				</div>
 				<!-- 	이메일 -->
 				<div class="email_wrap">
 					<div class="email_name">이메일</div>
-					<div class="email_input_box">
+<!-- 					<div class="email_input_box"> -->
 						<input class="email_input" type="text" name='email' id='email'
 							required>
-					</div>
+<!-- 					</div> -->
 					<div class="email_ch_wrap">
-						<div class="email_ch_input_box" id="email_ch_input_box_false">
+<!-- 						<div class="email_ch_input_box" id="email_ch_input_box_false"> -->
 							<input class="email_ch_input" type="text" placeholder="인증번호 입력"
 								class='email_auth_key' name='email_key' disabled="disabled">
-						</div>
+<!-- 						</div> -->
 						<div class="email_ch_button">
 							<span>인증번호 전송</span>
 						</div>
@@ -104,7 +112,7 @@
 			</div>
 		</form>
 	</div>
-
+	</div>
 	<script>
 
 		var code = ""; //Controller로부터 전달받은 인증번호를 뷰에 저장하는 코드 추가
@@ -149,8 +157,8 @@ $(".email_ch_input").blur(function(){
 	<!-- 	script -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	<script src="${contextPath}/resources/js/joinmember.js"></script>
-	<script src="${contextPath}/resources/js/addressapi.js"></script>
+	<script src="${contextPath}/resources/assets/js/joinmember.js"></script>
+	<script src="${contextPath}/resources/assets/js/addressapi.js"></script>
 	<!-- 주소 -->
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -158,5 +166,14 @@ $(".email_ch_input").blur(function(){
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07c29e6e2a0b7d1f4b8bdd99f49d6fab&libraries=services"></script>
 
+	<!-- 	script -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="/resources/assets/js/jquery.min.js"></script>
+	<script src="/resources/assets/js/jquery.dropotron.min.js"></script>
+	<script src="/resources/assets/js/jquery.scrollex.min.js"></script>
+	<script src="/resources/assets/js/browser.min.js"></script>
+	<script src="/resources/assets/js/breakpoints.min.js"></script>
+	<script src="/resources/assets/js/util.js"></script>
+	<script src="/resources/assets/js/main.js"></script>
 </body>
 </html>

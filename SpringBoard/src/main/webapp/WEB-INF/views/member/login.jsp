@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/login.css" />
+<link rel="stylesheet" href="/resources/assets/css/login.css" />
 </head>
 <body>
 	<!-- 	<h1>로그인</h1> -->
@@ -27,10 +27,11 @@
 </table> 
 </form> --%>
 
-<button id="show">로그인</button>
+<!-- <button id="show">로그인</button> -->
 <div class="background show"> <!-- 전체 배경 -->
 	<div class="window"> <!-- 모달 팝업을 감싸주는 창 -->
 		<div class="popup"> <!-- 모달 팝업 내용 -->
+		<button id="close" >닫기</button>
 		<div class="text">
 		<strong >로그인 후 이용하세요.</strong>
 		</div>
@@ -39,8 +40,7 @@
 		<input type="password" class="pw" name='passwd' placeholder="패스워드">
 		</form>
 		<div class="btn">
-		<button onclick="fn_login()">LOG IN</button>
-		<button id="close">닫기</button>		
+		<button onclick="fn_login()">LOG IN</button>	
 		</div>
 		<div class="text2">
 		<a href="/member/join">회원가입</a>

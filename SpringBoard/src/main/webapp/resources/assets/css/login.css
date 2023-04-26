@@ -42,7 +42,7 @@
 
 .btn{
 	text-align: center;
-	margin-top: 30px;
+	margin-top: 25px;
 }
 
 .id{
@@ -62,7 +62,11 @@
 }
 
 .text2{
-	margin-top: 30px;
+	margin-top: 15px;
 	margin-left: 200px;
 	
+}
+
+#close{
+	margin-left: 350px;
 }
