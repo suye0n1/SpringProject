@@ -28,7 +28,7 @@
 										</ul>
 									</li>
 								</ul>
-							<input type="hidden" "user_id" value="${login_user.user_id}">
+							<input type="hidden" id="user_id" value="${login_user.user_id}">
 							</li>
 							<li><a href="/member/logout" class="button">LOG OUT</a></li>
 						</ul>
