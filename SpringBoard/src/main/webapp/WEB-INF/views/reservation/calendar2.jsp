@@ -4,9 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="/resources/assets/css/main.css" />
 <title>Insert title here</title>
 <style>
  #btn_submit { 
@@ -244,27 +241,7 @@
 	}
 	
 </script>
-<!-- <body> -->
-<body class="is-preload">
-	<div id="page-wrapper">
-
-		<!-- Header -->
-		<%@include file="/WEB-INF/views/headerbar.jsp"%>
-
-		<!-- Main -->
-		<section id="main" class="container">
-			<header>
-				<h2>예약하기</h2><br>
-				<p>원하시는 날짜를 선택해주세요.</p>
-			</header>
-	<div class="row">
-		<div class="col-12">
-
-			<!-- Lists -->
-			<section class="box">
-				<div class="row">
-					<div class="col-6 col-12-mobilep">
-						<ul class="alt">
+<body>
 	<div class="mainBox">
 		<div class="contentBox">
 			<div class="textLeft">
@@ -308,29 +285,29 @@
 							id="selectedDate2" style="border: none; width: 100px"
 							name="selectedDate2" value="" readonly="readonly"></input>
 					</tr>
+
+					<tr>
+						<td class="top" align="left">결제 정보</td>
+					</tr>
+					<tr>
+						<td class="content" align="left" colspan="2"><input
+							id="totalPrice"
+							style="border: none; text-align: right; width: 100px"
+							name="totalPrice" value="" readonly="readonly"></input></td>
+					</tr>
+<!-- 					<tr> -->
+<!-- 						<td class="content" align="left" colspan="2"> -->
+<!-- 						</td> -->
+<!-- 					</tr> -->
+					
 				</table>
-				<input type="button" id="btn_submit" value="예약하기" onclick="submitRes()"></input>
+				<input type="button" id="btn_submit" value="결제하기" onclick="submitBuy()"></input>
 			</Form>
 		</div>
 	</div>
-</div>
 
-				</div>
-				</section>
-		</div>
-		</div>
-		</section>
 	<script type="text/javascript">
 		buildCalendar();
 	</script>
-	
-	<!-- Scripts -->
-	<script src="/resources/assets/js/jquery.min.js"></script>
-	<script src="/resources/assets/js/jquery.dropotron.min.js"></script>
-	<script src="/resources/assets/js/jquery.scrollex.min.js"></script>
-	<script src="/resources/assets/js/browser.min.js"></script>
-	<script src="/resources/assets/js/breakpoints.min.js"></script>
-	<script src="/resources/assets/js/util.js"></script>
-	<script src="/resources/assets/js/main.js"></script>
 </body>
 </html>

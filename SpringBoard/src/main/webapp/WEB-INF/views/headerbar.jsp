@@ -19,7 +19,7 @@
 								<ul>
 									<li><a href="/board/list?category=free_1">자유로운 이야기</a></li>
 									<li><a href="/board/list?category=free_2">나눔의 장</a></li>
-									<li><a href="/board/list?category=board_3">상가 맛집</a></li>
+									<li><a href="/reservation/guesthouse">게스트 하우스</a></li>
 									<li>
 										<a href="#">운동 센터</a>
 										<ul>
@@ -30,7 +30,7 @@
 								</ul>
 							<input type="hidden" id="user_id" value="${login_user.user_id}">
 							</li>
-							<li><a href="/member/logout" class="button">LOG OUT</a></li>
+							<li>${login_user.user_id}<a href="/member/logout" class="button">LOG OUT</a></li>
 						</ul>
 					</nav>
 				</header>

@@ -20,4 +20,9 @@ public class reservationController {
 	public void exercise() {
 		
 	}
+	
+	@GetMapping("/guesthouse")
+	public void guesthouse() {
+		
+	}
 }

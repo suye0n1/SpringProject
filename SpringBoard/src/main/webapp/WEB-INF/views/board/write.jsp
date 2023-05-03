@@ -62,6 +62,7 @@
 		</section>
 	</div>
 
+
 	<script type="text/javascript">
 	/* 이미지 업로드 */
 	$("input[type='file']").on("change", function(e){
@@ -132,7 +133,10 @@
 		return true;
 		
 	}
+
 	</script>
+
+
 
 	<!-- 	script -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

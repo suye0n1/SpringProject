@@ -31,7 +31,7 @@
 		<!-- 끝 -->
 
 		<property name="username" value="root" /><!-- db 계정에 맞게 수정 -->
-		<property name="password" value="root" /><!-- db 계정에 맞게 수정 -->
+		<property name="password" value="suye0n7526!" /><!-- db 계정에 맞게 수정 -->
 	</bean>
 
 	<!-- 내가 추가한거 -->

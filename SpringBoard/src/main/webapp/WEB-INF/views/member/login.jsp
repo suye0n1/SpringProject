@@ -6,32 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="/resources/assets/css/login.css" />
+<link rel="stylesheet" href="/resources/assets/css/main.css" />
 </head>
 <body>
-	<!-- 	<h1>로그인</h1> -->
-	<%-- 	${login.user_id} 로그인 세션--%>
-<%-- <form name="loginForm" method="get" onsubmit="return false;">
-	onsubmit="return false; ㅡ>자동 submit 방지 /안해주면 fomr이 제출되면서 컨트롤러로 넘어가고 컨트롤러가 실행되면서 list.jsp로 감
-	  <table>
-			<tr>
-				<td><input type="text" name='user_id' placeholder="아이디"><br></td>
-			</tr>
-			<tr>
-
-				<td><input type="password" name='passwd' placeholder="패스워드"><br></td>
-			</tr>
-
-			<tr>
-				<td><button onclick="fn_login()">LOG IN</button></td>
-			</tr>
-</table> 
-</form> --%>
-
-<!-- <button id="show">로그인</button> -->
 <div class="background show"> <!-- 전체 배경 -->
 	<div class="window"> <!-- 모달 팝업을 감싸주는 창 -->
 		<div class="popup"> <!-- 모달 팝업 내용 -->
-		<button id="close" >닫기</button>
+		<a href="/" class="btn">닫기</a>
 		<div class="text">
 		<strong >로그인 후 이용하세요.</strong>
 		</div>
@@ -39,12 +20,11 @@
 		<input type="text" class="id" name='user_id' placeholder="아이디"><br>
 		<input type="password" class="pw" name='passwd' placeholder="패스워드">
 		</form>
-		<div class="btn">
-		<button onclick="fn_login()">LOG IN</button>	
+		<div>
+		<button onclick="fn_login()" class="button">LOG IN</button>	
 		</div>
 		<div class="text2">
 		<a href="/member/join">회원가입</a>
-		<a href="#">비밀번호 찾기</a>
 		</div>
 		</div>
 	</div>
@@ -83,5 +63,15 @@
 	document.querySelector("#close").addEventListener("click", close);
 
 </script>
+
+
+<!-- Scripts -->
+	<script src="/resources/assets/js/jquery.min.js"></script>
+	<script src="/resources/assets/js/jquery.dropotron.min.js"></script>
+	<script src="/resources/assets/js/jquery.scrollex.min.js"></script>
+	<script src="/resources/assets/js/browser.min.js"></script>
+	<script src="/resources/assets/js/breakpoints.min.js"></script>
+	<script src="/resources/assets/js/util.js"></script>
+	<script src="/resources/assets/js/main.js"></script>
 </body>
 </html>
