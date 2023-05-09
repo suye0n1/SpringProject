@@ -41,6 +41,7 @@
 							<li>방송댄스 <a href="/reservation/calendar">예약하기</a></li>
 							<li>문화 프로그램 <a href="/reservation/calendar">예약하기</a></li>
 							<li>독서실 <a href="/reservation/calendar">예약하기</a></li>
+							<li>게스트하우스 <a href="/reservation/calendar">예약하기</a></li>
 						</ul>
 
 					</div>

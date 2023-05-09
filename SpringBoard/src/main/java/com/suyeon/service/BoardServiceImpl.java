@@ -26,6 +26,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public BoardDto read(long num, String category) {
+		// 컨트롤러에 잇는 로직이 다 여기 들어가야 한다
 		//조회수 카운트
 		mapper.viewCount(num);
 		return mapper.read(num, category);

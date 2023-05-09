@@ -25,7 +25,6 @@
 						<ul>
 							<li><a href="/board/list?category=board_1">자유로운 이야기</a></li>
 							<li><a href="/board/list?category=board_2">나눔의 장</a></li>
-							<li><a href="/reservation/guesthouse">게스트 하우스</a></li>
 							<li><a href="#">운동 센터</a>
 								<ul>
 									<li><a href="/reservation/exercise">접수</a></li>
@@ -38,7 +37,7 @@
 
 		<!-- Banner -->
 		<section id="banner">
-			<h2>COMMUNITY</h2>
+			<h2>APARTMENT COMMUNITY</h2>
 			<p>Another fine responsive site template freebie by HTML5 UP.</p>
 			<ul class="actions special">
 				<li><a href="/member/join" class="button">Sign Up</a></li>

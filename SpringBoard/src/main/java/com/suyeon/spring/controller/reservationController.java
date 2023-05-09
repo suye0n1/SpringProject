@@ -21,8 +21,4 @@ public class reservationController {
 		
 	}
 	
-	@GetMapping("/guesthouse")
-	public void guesthouse() {
-		
-	}
 }

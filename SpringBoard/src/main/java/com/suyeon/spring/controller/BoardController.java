@@ -3,6 +3,7 @@ package com.suyeon.spring.controller;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class BoardController {
 	}
 
 	// 삭제
-	@GetMapping("/del")
+	@GetMapping("/board")
 	public String del(@RequestParam("num") Long num, @RequestParam("category") String category, HttpSession session) {
 		log.info("컨트롤러" + num);
 		service.del(num);
@@ -90,10 +91,9 @@ public class BoardController {
 		log.info("===================");
 		model.addAttribute("category",category);
 	}
-//todo 글쓰고 리스트에 뿌릴 때 로그인한 user_id가 나오도록
 	
-	 @PostMapping("/write") public String write(BoardDto dto, MultipartFile[]
-	 uploadFile) { 
+	 @PostMapping("/write") 
+	 public String write(BoardDto dto, MultipartFile[] uploadFile) { 
 		 service.write(dto);
 	 log.info("==================="+dto.getCategory()); return
 	 "redirect:/board/list?category="+dto.getCategory(); 
@@ -101,17 +101,16 @@ public class BoardController {
 	
 		//이미지 업로드
 		@PostMapping(value="/upload", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-		public ResponseEntity<List<BoardDto>> upload(MultipartFile[] uploadFile) {		//반환 타입이 ResponseEntity객체이고 Http의 Body에 추가될 데이터는 <List<AttachImageDto>이다 
+		public ResponseEntity<List<BoardDto>> upload(MultipartFile[] uploadFile) {		//반환 타입이 ResponseEntity객체이고 Http의 Body에 추가될 데이터는 <List<AttachImageDto> 
 //			파일을 저장할 기본적 경로를 저장하는 변수 선언&초기화
 //			이미지 파일이 맞는지 체크
 			for(MultipartFile multipartFile: uploadFile) {
 
-				//File의 객체는 MIME TYPE
+				
 				File checkfile = new File(multipartFile.getOriginalFilename());
 				String type = null;
 				try {
-				//probeContentType:MIME TYPE데이터를 String으로 변환
-				//파라미터로는 Path객체로 전달받아야 하는데 이를 위해 toPath() 사용
+				
 				type = Files.probeContentType(checkfile.toPath());
 				log.info("MIME TYPE:"+type);
 				} catch(IOException e) {
@@ -124,15 +123,12 @@ public class BoardController {
 				}
 			}
 			String uploadFolder = "C:\\upload";
-//			SimpleDateFormat:날짜 데이터를 지정된 문자열 형식으로 변환, 날짜 문자열 데이터를 날짜 데이터로 변환
 			/*날짜 폴더 경로*/
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = new Date();
 			String str = sdf.format(date);
-//			str 데이터에는 '-'가 작성되어있기 때문에 replace를 사용해서 \로 변경
 			String datePath = str.replace("-", File.separator);	//2023-04-07을 2023\04\07로 바꿔줌
 //			경로 설정을 위해 File객체 초기화
-//			uploadFolder는 저장소의 경로 datePath는 하위 경로
 			File uploadPath = new File(uploadFolder, datePath);
 //			uploadPath.mkdirs();	//폴더 여러 개 생성			
 			//위의까지의 코드만 사용하게 되면 폴더가 이미 존재하는 상황에도 폴더를 새로 생성하게됨
@@ -148,21 +144,10 @@ public class BoardController {
 			for(MultipartFile multipartFile : uploadFile) {
 				//이미지 정보 객체
 				BoardDto dto = new BoardDto();
-				//뷰에서 전달받은 파일을 지정한 폴더에 저장하기
-				//파일 이름
 				String uploadFileName = multipartFile.getOriginalFilename();
 				dto.setFileName(uploadFileName);
 				dto.setUploadPath(datePath);
-				//UUID 적용 UUID: 국제기구에서 표준으로 정한 식별자
-				//똑같은 이름의 파일을 저장할 경우 기존 파일을 덮어씌워버림
-				//UUID는 5개의 버전 방식을 사용 
-				//버전4 방식 적용(randomUUID()): 정적(static)메서드이기 때문에 UUID를 인스턴스화하지않고 사용 가능
-				//*static메서드:
-				//클래스 자체에 속하기 때문에 인스턴스화하지 않고 호출 가능
-				//인스턴스 변수나 인스턴스 메서드에 접근 불가능
-				//static메서드를 사용하기 위해서는 클래스 이름을 통해 호출, 해당 클래스의 인스턴스를 만들 필요가 없음
-				//UUID타입의 데이터이기 때문에 toString메서디를 사용하여 String타입으로 변경해줘야함
-				// uuid 적용 파일 이름
+				
 				String uuid = UUID.randomUUID().toString();
 				dto.setUuid(uuid);
 				uploadFileName = uuid + "_"+ uploadFileName;
@@ -171,25 +156,14 @@ public class BoardController {
 				//파일 저장(transferTo()의 경우 IOException와 IllegalStateException을 일으킬 가능성이 있기 때문에 try catch문을 사용
 				try {
 					multipartFile.transferTo(saveFile);
-					//썸네일 생성 및 저장	 ImageIO도 try catch구문 사용
 					File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
-					//BufferedImage는 이미지 데이터를 처리하거나 조작에 필요한 값과 메서드 제공
-					//read는 BufferedImage타입으로 변경해주는 메서드 
 					BufferedImage bo_image = ImageIO.read(saveFile);
-					//(width, height, imageType)
-					//비율
 					double ratio = 3;
 					int width = (int) (bo_image.getWidth() / ratio);
 					int height = (int) (bo_image.getHeight() / ratio);
-					Thumbnails.of(saveFile)	//ImageIo보다 간단하게 생성하기(코드 127-129)
+					Thumbnails.of(saveFile)	
 					.size(width, height)
 					.toFile(thumbnailFile);
-				//	BufferedImage bt_image = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-				//	Graphics2D graphic = bt_image.createGraphics();
-					//(x,y,width,height,ImageObserver)
-				//	graphic.drawImage(bo_image, 0,0,width,height,null);
-					//썸네일 이미지를 파일로 만들어주기 (파일로 저장할 이미지, 이미지 형식, 지정될 경로와 이름으로 생성한 File객체)
-				//	ImageIO.write(bt_image, "jpg", thumbnailFile);
 				} catch(Exception e){
 					
 				}
@@ -204,6 +178,53 @@ public class BoardController {
 			return result;
 		}
 
+		//이미지 파일 업로드
+		@GetMapping("/display")
+		public ResponseEntity<byte[]> getImage(String fileName){
+			File file = new File("c:\\upload\\" + fileName);
+			
+			ResponseEntity<byte[]> result = null;
+			
+			try {
+				
+				HttpHeaders header = new HttpHeaders();
+				
+				header.add("Content-type", Files.probeContentType(file.toPath()));
+				
+				result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+				
+			}catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+		
+		//이미지 파일 삭제
+		@PostMapping("/deleteFile")
+		public ResponseEntity<String> deleteFile(String fileName){
+			log.info("deleteFile....."+ fileName);
+			File file = null;
+			try {
+				//썸네일 파일 삭제
+				file = new File("c:\\upload\\" + URLDecoder.decode(fileName, "UTF-8"));
+				
+				file.delete();
+				
+				//원본 파일 삭제
+				String originFileName = file.getAbsolutePath().replace("s_", "");
+				
+				file = new File(originFileName);
+				file.delete();
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+				
+				return new ResponseEntity<String>("fail", HttpStatus.NOT_IMPLEMENTED);
+			}
+			
+			return new ResponseEntity<String>("sucess", HttpStatus.OK);
+		}
 	// 수정
 	@PostMapping("/modify")
 	public String modify(BoardDto dto, @RequestParam("category") String category) {
