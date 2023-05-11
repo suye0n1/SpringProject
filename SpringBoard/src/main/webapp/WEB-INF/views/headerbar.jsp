@@ -17,8 +17,9 @@
 							<li>
 								<a href="#" class="icon solid fa-angle-down">MENU</a>
 								<ul>
-									<li><a href="/board/list?category=free_1">자유로운 이야기</a></li>
-									<li><a href="/board/list?category=free_2">나눔의 장</a></li>
+								
+									<li><a href="/board/list?category=board_1">자유로운 이야기</a></li>
+									<li><a href="/board/list?category=board_2">나눔의 장</a></li>
 									<li><a href="/reservation/guesthouse">게스트 하우스</a></li>
 									<li>
 										<a href="#">운동 센터</a>

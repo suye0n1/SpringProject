@@ -9,10 +9,6 @@
 		values (#{num}, #{fileName}, #{uploadPath}, #{uuid})
 	</insert>
 	
-	 <delete id = "imageDelete">
-		delete from images where uuid = #{uuid}
-	</delete>
-	
 	<select id = "findByNum" resultType="com.suyeon.dto.BoardAttachDto">
 		select * from images where num = #{num}
 	</select> 

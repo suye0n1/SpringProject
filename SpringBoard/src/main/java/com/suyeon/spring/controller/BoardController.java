@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.suyeon.dto.BoardAttachDto;
 import com.suyeon.dto.BoardDto;
+import com.suyeon.mapper.BoardAttachMapper;
 import com.suyeon.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -44,7 +45,8 @@ import net.coobird.thumbnailator.Thumbnails;
 public class BoardController {
 
 	private BoardService service;
-
+	
+	private BoardAttachMapper aMapper;
 	// 1.리스트
 	@GetMapping("/list")
 	public void list(@RequestParam(value = "category") String category, Model model) {
@@ -54,10 +56,20 @@ public class BoardController {
 
 	// 2.읽기
 	@GetMapping({ "/read", "/modify" })
-	public void read(BoardDto dto, BoardAttachDto adto, Model model1, Model model2) {
+	public void read(BoardDto dto, BoardAttachDto adto, Model model) {
 		log.info("컨트롤러" + dto.getNum());
-		model1.addAttribute("read", service.read(dto.getNum(), dto.getCategory()));
-		model2.addAttribute("findByNum", service.findByNum(adto.getNum()));
+		model.addAttribute("read", service.read(dto.getNum(), dto.getCategory()));
+		
+	}
+	
+	//이미지 정보 반환
+	@GetMapping(value="/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<BoardAttachDto>> getAttachList(int num){
+		
+		log.info("getAttachList.........." + num);
+		
+		return new ResponseEntity<List<BoardAttachDto>>(aMapper.findByNum(num), HttpStatus.OK);
+		
 	}
 
 	// 삭제

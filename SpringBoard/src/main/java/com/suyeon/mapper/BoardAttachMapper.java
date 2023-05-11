@@ -7,7 +7,6 @@ import com.suyeon.dto.BoardDto;
 
 public interface BoardAttachMapper {
 	public void imageInsert(BoardAttachDto attach);
-	public void imageDelete(String uuid);
 	public List<BoardAttachDto> findByNum(int num);
 
 }

@@ -49,9 +49,13 @@
 							<td>
 								<div class="form_section" style="height: 400px;">
 									<div class="form_section_title">
-										<label></label>
+										<label>사진 이미지</label>
+<%-- 										<img src="/board/display?${fileName}"> --%>
 									</div>
 									<div class="form_section_content"></div>
+									<div id="uploadReslut">
+																		
+									</div>
 								</div>
 							</td>
 						</tr>
@@ -115,7 +119,31 @@
 				}
 			});
 		}
-	</script>
+
+		//이미지 정보 호출 
+		let uploadReslut = $("#uploadReslut");
+		 //jQuery 라이브러리에서 제공하는 AJAX 메서드 
+		$.getJSON("/board/getAttachList", {num : num}, function(arr){	
+			if(arr.length === 0){			
+				return;
+			}
+			
+			let str = "";
+			for(let i=0; i< arr.length; i++){
+				
+			let obj = arr[i];	
+			
+			let fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+			str += "<div id='result_card'";
+			str += "data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'";
+			str += ">";
+			str += "<img src='/board/display?fileName=" + fileCallPath +"'>";
+			str += "</div>";		
+			}
+			uploadReslut.html(str);	
+		});
+		</script>
+
 
 	<!-- Scripts -->
 	<script src="/resources/assets/js/jquery.min.js"></script>

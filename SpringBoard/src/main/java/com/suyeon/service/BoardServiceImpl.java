@@ -37,10 +37,7 @@ public class BoardServiceImpl implements BoardService{
 		mapper.viewCount(num);
 		return mapper.read(num, category);
 	}
-	@Override
-	public List<BoardAttachDto> findByNum(int num) {
-		return aMapper.findByNum(num);
-	}
+	
 	@Override
 	public void del(int num) {
 		 mapper.del(num);
