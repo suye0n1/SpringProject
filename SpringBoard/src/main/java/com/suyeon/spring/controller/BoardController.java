@@ -110,15 +110,18 @@ public class BoardController {
 	 public String write(BoardDto dto) { 
 		 
 		 log.info("===============================");
+		 log.info("ID: " + dto.getId());
 			log.info("register : " + dto);
 			
+			
 			if(dto.getImageList() != null) {
-				dto.getImageList().forEach(attach -> log.info(attach));
-			}
+			dto.getImageList().forEach(attach -> log.info(attach));
+		}	
 			
 			log.info("===============================");
 		
-		service.write(dto);
+		service.write(dto); 
+
 	 log.info("==================="+dto.getCategory()); return
 	 "redirect:/board/list?category="+dto.getCategory(); 
 	 }

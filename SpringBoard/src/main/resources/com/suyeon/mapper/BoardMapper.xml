@@ -27,9 +27,8 @@
   			select max(num) from spring_board
   		
   		</selectKey>  	
- 
- 
-		insert into spring_board (title, content, category) values (#{title}, #{content}, #{category});
+
+		insert into spring_board (title, content, id, category) values (#{title}, #{content}, #{id}, #{category});
 	</insert>
 
 <!-- 	수정 -->

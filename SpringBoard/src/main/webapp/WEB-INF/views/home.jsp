@@ -23,14 +23,17 @@
 					<li><a href="/">Home</a></li>
 					<li><a href="#" class="icon solid fa-angle-down">MENU</a>
 						<ul>
-							<li><a href="/board/list?category=board_1">자유로운 이야기</a></li>
-							<li><a href="/board/list?category=board_2">나눔의 장</a></li>
-							<li><a href="#">운동 센터</a>
+							<li><a href=# id="menu1">자유로운 이야기</a></li>
+							<li><a href=# id="menu2">나눔의 장</a></li>
+							<li><a href="#" >운동 센터</a>
 								<ul>
-									<li><a href="/reservation/exercise">접수</a></li>
-									<li><a href="#">Q&A</a></li>
-								</ul></li>
-						</ul></li>
+									<li><a href="#" id="menu3">접수</a></li>
+								</ul>
+								
+								</li>
+						</ul>
+						
+						</li>
 				</ul>
 			</nav>
 		</header>
@@ -124,7 +127,30 @@
 		<ul class="copyright">
 		</ul>
 	</footer>
+	<script>
+	const menu1 = document.getElementById('menu1');
+	const menu2 = document.getElementById('menu2');
+	const menu3 = document.getElementById('menu3');
+	
+	menu1.addEventListener('click', function(){
+			alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.');
+			  window.location.href = "/member/login"; // 로그인 페이지로 이동
+			});
+	
+	menu2.addEventListener('click', function(){
+		alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.');
+		  window.location.href = "/member/login"; // 로그인 페이지로 이동
+		});
+	
+	menu3.addEventListener('click', function(){
+		alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.');
+		  window.location.href = "/member/login"; // 로그인 페이지로 이동
+		});
+	
+	</script>
 
+	
+	</script>
 	<!-- Scripts -->
 	<script src="/resources/assets/js/jquery.min.js"></script>
 	<script src="/resources/assets/js/jquery.dropotron.min.js"></script>

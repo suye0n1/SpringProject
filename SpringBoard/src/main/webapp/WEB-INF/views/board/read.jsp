@@ -124,9 +124,6 @@
 		let uploadReslut = $("#uploadReslut");
 		 //jQuery 라이브러리에서 제공하는 AJAX 메서드 
 		$.getJSON("/board/getAttachList", {num : num}, function(arr){	
-			if(arr.length === 0){			
-				return;
-			}
 			
 			let str = "";
 			for(let i=0; i< arr.length; i++){
