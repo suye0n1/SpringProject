@@ -75,10 +75,6 @@
 								<div class="form_section_content">
 									<input type="file" multiple id="fileItem" name='uploadFile' style="height: 30px;">
 									<div id="uploadResult">
-<!-- 										<div id="result_card"> -->
-<!-- 											<div class="imgDeleteBtn">x</div> -->
-<!-- 											<img src="/board/display?fileName=test.png"> -->
-<!-- 										</div> -->
 									</div>
 								</div>
 								<div class="col-12">
@@ -116,26 +112,24 @@
 			let fileList = fileInput[0].files;
 			// 		fileList의 요소로 있는 File객체에 접근
 			let fileObj = fileList[0];
+			
 			console.log("fileList:" + fileList);
 			console.log("fileObj:" + fileObj);
 			// 		File객체에 담긴 데이터가 <input>태그를 통해 선택한 파일이 맞는지 확인
 			console.log("fileaName:" + fileObj.name);
 			console.log("filesize:" + fileObj.size);
 			console.log("fileType(MimeType):" + fileObj.type);
-
-			//if 조건문에는 fileCheck()메서드와 not논리 연산자 작성,구현부에는 return false를 작성
-			//이렇게 하면 메서드가 false를반환 했을 때 not연산자로 인해 ture로 값이 변경되어 실행됨
+	
+			for (let i = 0; i < fileList.length; i++) {
+			
 			if (!fileCheck(fileObj.name, fileObj.size)) {
 				return false;
 			}
-			// 		 <input> name과 Controller의 url 매핑 메서드의 매개변수 이름과 동일하게 해주었듯이
-			// 		 key와 추후 추가할 url 매핑 메서드의 매개변수명이 동일
-			//		파일 한 개만 저장
-			// 		formData.append("uploadFile", fileObj);
-			//		파일 여러 개 저장
-			for (let i = 0; i < fileList.length; i++) {
+			
+			
 				formData.append("uploadFile", fileList[i]);
 			}
+			
 			// 		서버로 전송하는 코드
 			//		processData와 contentType의 경우 속성 값을 false로 해주여야만 첨부파일이 서버로 전송됨
 			$.ajax({
@@ -184,8 +178,9 @@
 			
 			let uploadResult = $("#uploadResult");
 			
-			let obj = uploadResultArr[0];
-			
+			for(let i=0; i < uploadResultArr.length; i++){
+				
+			let obj = uploadResultArr[i];
 			let str = "";
 			// encodeURIComponent() : 한글 자동 변환 / 이 메서드는 '/'와 '\'문자 또한 인코딩을 하기 때문에 replace 사용 안해도 됨
 			let fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
@@ -193,9 +188,13 @@
 			str += "<div id='result_card'>";
 			str += "<img src = '/board/display?fileName="+ fileCallPath +"'>";
 			str += "<div class='imgDeleteBtn' data-file='" + fileCallPath + "'>x</div>";
+			str += "<input type='hidden' name='imageList[" + i + "].fileName' value='"+ obj.fileName +"'>";
+			str += "<input type='hidden' name='imageList[" + i + "].uuid' value='"+ obj.uuid +"'>";
+			str += "<input type='hidden' name='imageList[" + i + "].uploadPath' value='"+ obj.uploadPath +"'>";
 			str += "</div>";
 			
 			uploadResult.append(str);
+			}
 		}
 		
 		$("#uploadResult").on("click", ".imgDeleteBtn", function(e){

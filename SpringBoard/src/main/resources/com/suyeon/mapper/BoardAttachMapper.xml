@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suyeon.mapper.BoardAttachMapper">
+
+	<insert id = "imageInsert" parameterType="com.suyeon.dto.BoardDto">
+		insert into images (num, fileName, uploadPath, uuid)
+		values (#{num}, #{fileName}, #{uploadPath}, #{uuid})
+	</insert>
+	
+	 <delete id = "imageDelete">
+		delete from images where uuid = #{uuid}
+	</delete>
+	
+	<select id = "findByNum" resultType="com.suyeon.dto.BoardAttachDto">
+		select * from images where num = #{num}
+	</select> 
+	
+</mapper>

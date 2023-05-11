@@ -49,7 +49,7 @@
 							<td>
 								<div class="form_section" style="height: 400px;">
 									<div class="form_section_title">
-										<label>사진 이미지</label>
+										<label></label>
 									</div>
 									<div class="form_section_content"></div>
 								</div>

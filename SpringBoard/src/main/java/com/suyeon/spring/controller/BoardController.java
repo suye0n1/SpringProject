@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.suyeon.dto.BoardAttachDto;
 import com.suyeon.dto.BoardDto;
 import com.suyeon.service.BoardService;
 
@@ -53,15 +54,16 @@ public class BoardController {
 
 	// 2.읽기
 	@GetMapping({ "/read", "/modify" })
-	public void read(BoardDto dto, Model model) {
+	public void read(BoardDto dto, BoardAttachDto adto, Model model1, Model model2) {
 		log.info("컨트롤러" + dto.getNum());
-		model.addAttribute("read", service.read(dto.getNum(), dto.getCategory()));
+		model1.addAttribute("read", service.read(dto.getNum(), dto.getCategory()));
+		model2.addAttribute("findByNum", service.findByNum(adto.getNum()));
 	}
 
 	// 삭제
-	@GetMapping("/board")
-	public String del(@RequestParam("num") Long num, @RequestParam("category") String category, HttpSession session) {
-		log.info("컨트롤러" + num);
+	@GetMapping("/del")
+	public String del(@RequestParam("num") int num, @RequestParam("category") String category, HttpSession session) {
+		log.info("컨트롤러 삭제" + num);
 		service.del(num);
 		return "redirect:/board/list?category="+category;
 	}
@@ -93,15 +95,25 @@ public class BoardController {
 	}
 	
 	 @PostMapping("/write") 
-	 public String write(BoardDto dto, MultipartFile[] uploadFile) { 
-		 service.write(dto);
+	 public String write(BoardDto dto) { 
+		 
+		 log.info("===============================");
+			log.info("register : " + dto);
+			
+			if(dto.getImageList() != null) {
+				dto.getImageList().forEach(attach -> log.info(attach));
+			}
+			
+			log.info("===============================");
+		
+		service.write(dto);
 	 log.info("==================="+dto.getCategory()); return
 	 "redirect:/board/list?category="+dto.getCategory(); 
 	 }
 	
 		//이미지 업로드
 		@PostMapping(value="/upload", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-		public ResponseEntity<List<BoardDto>> upload(MultipartFile[] uploadFile) {		//반환 타입이 ResponseEntity객체이고 Http의 Body에 추가될 데이터는 <List<AttachImageDto> 
+		public ResponseEntity<List<BoardAttachDto>> upload(MultipartFile[] uploadFile) {		//반환 타입이 ResponseEntity객체이고 Http의 Body에 추가될 데이터는 <List<AttachImageDto> 
 //			파일을 저장할 기본적 경로를 저장하는 변수 선언&초기화
 //			이미지 파일이 맞는지 체크
 			for(MultipartFile multipartFile: uploadFile) {
@@ -118,7 +130,7 @@ public class BoardController {
 				}
 //				startsWith(): String타입의 데이터를 전달받는데 전달 받은 문자로 시작할 경우 true 아니면false
 				if(!type.startsWith("image")) {
-					List<BoardDto> list = null;
+					List<BoardAttachDto> list = null;
 					return new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
 				}
 			}
@@ -139,11 +151,11 @@ public class BoardController {
 			//여기까지 하게 되면 upload\\temp\\2023\\04\\07폴더가 생성됨
 			
 			//이미지 정보 담는 객체
-			List<BoardDto> list = new ArrayList();
+			List<BoardAttachDto> list = new ArrayList();
 			
 			for(MultipartFile multipartFile : uploadFile) {
 				//이미지 정보 객체
-				BoardDto dto = new BoardDto();
+				BoardAttachDto dto = new BoardAttachDto();
 				String uploadFileName = multipartFile.getOriginalFilename();
 				dto.setFileName(uploadFileName);
 				dto.setUploadPath(datePath);
@@ -174,7 +186,7 @@ public class BoardController {
 			log.info("파일 크기:"+multipartFile.getSize());
 			}
 			
-			ResponseEntity<List<BoardDto>> result = new ResponseEntity<List<BoardDto>>(list, HttpStatus.OK);
+			ResponseEntity<List<BoardAttachDto>> result = new ResponseEntity<List<BoardAttachDto>>(list, HttpStatus.OK);
 			return result;
 		}
 
@@ -225,6 +237,7 @@ public class BoardController {
 			
 			return new ResponseEntity<String>("sucess", HttpStatus.OK);
 		}
+		
 	// 수정
 	@PostMapping("/modify")
 	public String modify(BoardDto dto, @RequestParam("category") String category) {

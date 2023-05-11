@@ -21,8 +21,17 @@
 	</delete>
 <!-- 	쓰기 -->
 	<insert id="write">
+		
+		<selectKey resultType="int" keyProperty="num" order="AFTER">
+  		
+  			select max(num) from spring_board
+  		
+  		</selectKey>  	
+ 
+ 
 		insert into spring_board (title, content, category) values (#{title}, #{content}, #{category});
 	</insert>
+
 <!-- 	수정 -->
 	<update id="modify">
 		update spring_board set title = #{title} , content = #{content}, category = #{category} where num = #{num};
@@ -66,5 +75,7 @@ update likes set like_check = 1 where num = #{num} and user_id = #{user_id}
 <update id="updateLikeCheckCancel">
 update likes set like_check = 0 where num = #{num} and user_id = #{user_id}
 </update>
-	
+
+
+
 </mapper>

@@ -1,26 +1,24 @@
 package com.suyeon.dto;
 
+
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class BoardDto {
+	//게시판
 	private int num;
 	private String title;
 	private String content;
 	private String id;
-	//int가 아닌 Long타입(참조형 변수)을 쓰는 이유: 값이 설정되지 않는 경우, null갓을 넣기 위해서
-	//int, long은 기본형이란 값이 없는 경우 0이 설정되어 있음
 	private Long hits;	
 	private String dt;
 	private String category;
 	private int like_count;
 	
-	//이미지 업로드
-	private String uploadPath;
-	private String uuid;
-	private String FileName;
-	private int bookId;
-
+	private List<BoardAttachDto> imageList;
+	
 	//좋아요
 	private int like_no;
 	private String user_id;
