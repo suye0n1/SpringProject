@@ -10,10 +10,10 @@
 <body>
 <!-- Header -->
 				<header id="header" class="alt2">
-					<h1><a href="/">COMMUNITY</a></h1>
+					<h1><a href="/board/login_page">COMMUNITY</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="/">Home</a></li>
+							<li><a href="/board/login_page">Home</a></li>
 							<li>
 								<a href="#" class="icon solid fa-angle-down">MENU</a>
 								<ul>
@@ -23,13 +23,15 @@
 									<li>
 										<a href="#">운동 센터</a>
 										<ul>
-											<li><a href="/reservation/exercise">접수</a></li>
+											<li><a href="/reservation/calendar">접수</a></li>
 										</ul>
 									</li>
 								</ul>
-							<input type="hidden" id="user_id" value="${login_user.user_id}">
+							<input type="hidden" id="user_id" name="user_id" value="${login_user.user_id}">
 							</li>
-							<li>${login_user.user_id}<a href="/member/logout" class="button">LOG OUT</a></li>
+							<li>${login_user.user_id}</li>
+							<li><a href="/reservation/mypage?user_id=${login_user.user_id}" class="button">MY PAGE</a></li>
+							<li><a href="/member/logout" class="button">LOG OUT</a></li>
 						</ul>
 					</nav>
 				</header>

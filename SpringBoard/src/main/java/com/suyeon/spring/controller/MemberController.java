@@ -29,11 +29,10 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/member/*")
 @AllArgsConstructor
-//@SessionAttributes("login") 로그인 세션
 @Controller
 public class MemberController {
 
-	@Autowired // 1-2(1)
+	@Autowired 
 	private MemberService service;
 
 	@Autowired
@@ -43,30 +42,10 @@ public class MemberController {
 	@Inject // 의존성 주입
 	private BCryptPasswordEncoder pwEncoder; // 객체 생성
 
-	// 1-2회원가입 페이지 이동
+	
 	@RequestMapping(value = "join", method = RequestMethod.GET) // 1-2(2)
 	public void loginGET() {
 	}
-
-	// 1-1회원가입 페이지 이동 방법
-//	@GetMapping("/join")
-//	public void join() {
-//	
-//	}
-
-	// 2.회원가입
-//	@PostMapping("/join")
-//	public String join(MemberDto dto, Model model) {
-//		log.info(dto.getUser_id());
-//		log.info(dto.getEmail());
-//		service.join(dto);
-//		return "redirect:/board/list";
-//	}
-
-//	@GetMapping("/join")
-//	public void join(@RequestParam(value = "location", defaultValue = "/") String location, Model model) {
-//		model.addAttribute("location", location);
-//	}
 
 	@PostMapping("/joinMember")
 	public String join(HttpServletRequest request, MemberDto dto) {
@@ -79,16 +58,6 @@ public class MemberController {
 		return "redirect:/";
 
 	}
-
-	// 아이디 중복 확인
-//	@GetMapping("/idCheck")
-//	public String idCheck(@RequestParam("user_id") String user_id, Model model) {	//join.jsp에서 userid 가져오기
-//		log.info("넘어옴" + user_id);
-//		 service.idCheck(user_id);
-//			RequestParam user_id와 쿼리에서 가져온 user_id가 같으면 중복
-//				model.addAttribute("user_id",user_id);
-//			return "/member/join";
-//	}
 
 	// 아이디 중복 확인
 	@GetMapping("/idCheck")
@@ -145,26 +114,9 @@ public class MemberController {
 
 	}
 
-	// 4.로그인 체크&확인(암호화하기 전 코드)
-//	@GetMapping("/login_check")
-//	public String login(@RequestParam("user_id") String user_id, @RequestParam("passwd") String passwd, Model model) {
-//		MemberDto Login = service.login(user_id, passwd);
-//		System.out.println("로그인");
-//		if(Login != null) {
-//			model.addAttribute("login", Login);
-//			return "redirect:/board/list?category=free";
-//		}	else {
-//			//경고문
-//			return "redirect:/member/login";
-//		}
-//	}
-
 	@GetMapping("/login_check")
 	public String login(HttpServletRequest request, MemberDto dto, Model model) throws Exception {
 		try {
-//		String passwd =  dto.getPasswd(); //유저가 쓴 패스워드(작성할 필요x)
-			// 유저가 쓴 아이디(dto.getUser_id())를 가지고 service로 이동해서 db에 있는 user_id랑 비교해서 맞으면 그
-			// 아이디를 savedUser에 저장
 			MemberDto savedUser = service.login(dto.getUser_id());
 			if (savedUser != null) { // savedUser가 null이 아니고
 //				pwEncoder.matches(savedUser.getPasswd(), dto.getPasswd())로 작성하면 오류
@@ -190,14 +142,6 @@ public class MemberController {
 		return "redirect:/board/login_page"; // try구문에서 if문 false 나올 때 return값을 작성 안하면 catch구문으로 이동하기 때문에 return값 작성해주기
 	}
 
-//	@GetMapping("/logout")	//@SessionAttributes("login")이용한 로그아웃
-//	public String logout(SessionStatus status) {
-//		status.setComplete();
-//		return "redirect:/";
-//	}
-	
-
-	
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		SessionUtils.removeObject(request, "login_user");

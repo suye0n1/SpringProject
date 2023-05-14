@@ -46,7 +46,6 @@
 			loginForm.passwd.focus();
 			return false;
 		}
-		alert("로그인되었습니다.");
 		loginForm.method = "get";
 		loginForm.action = "${contextPath}/member/login_check";
 		loginForm.submit();
