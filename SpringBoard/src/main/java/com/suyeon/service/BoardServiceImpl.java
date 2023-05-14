@@ -46,19 +46,20 @@ public class BoardServiceImpl implements BoardService{
 	@Transactional
 	@Override
 	public void write(BoardDto dto) {
-		if(dto.getImageList() == null || dto.getImageList().size() <= 0) {
-			return;
-		}
+//		if(dto.getImageList() == null || dto.getImageList().size() <= 0) {
+//			return;
+//		}
 		
 		try {
 		  mapper.write(dto);
-		  
+		  if(dto.getImageList() != null) {
 		dto.getImageList().forEach(attach ->{ 
 			//spring_board의 num을 images의 board_num으로
 			attach.setNum(dto.getNum());
 			aMapper.imageInsert(attach);
 			log.info(attach);
 		});
+		  }
 		} catch(Exception e) {
 			throw new RuntimeException(e);
 		}

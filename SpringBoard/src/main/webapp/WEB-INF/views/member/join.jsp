@@ -17,7 +17,17 @@
 	<div id="page-wrapper">
 
 		<!-- Header -->
-		<%@include file="/WEB-INF/views/headerbar.jsp"%>
+		<header id="header" class="alt2">
+			<h1>
+				<a href="/">COMMUNITY</a>
+			</h1>
+			<nav id="nav">
+				<ul>
+					<li><a href="/">Home</a></li>
+				</ul>
+				
+			</nav>
+		</header>
 
 		<div class="wrapper">
 			<form name="joinForm" method="post" onsubmit="return false;">

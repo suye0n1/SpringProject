@@ -122,11 +122,11 @@ public class BoardController {
 			if(dto.getImageList() != null) {
 			dto.getImageList().forEach(attach -> log.info(attach));
 		}	
-			
+	
 			log.info("===============================");
 		
 		service.write(dto); 
-
+			
 	 log.info("==================="+dto.getCategory()); return
 	 "redirect:/board/list?category="+dto.getCategory(); 
 	 }
