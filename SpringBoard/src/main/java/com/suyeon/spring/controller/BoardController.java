@@ -5,13 +5,16 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
@@ -31,8 +34,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.suyeon.dto.BoardAttachDto;
 import com.suyeon.dto.BoardDto;
+import com.suyeon.dto.MemberDto;
 import com.suyeon.mapper.BoardAttachMapper;
 import com.suyeon.service.BoardService;
+import com.suyeon.session.SessionUtils;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -259,6 +264,17 @@ public class BoardController {
 		service.modify(dto);
 		return "redirect:/board/list?category="+category;
 	}
-
+	
+	@RequestMapping(value = "/login_page", method = RequestMethod.GET)
+	public String home(HttpServletRequest request) {
+		
+		if(SessionUtils.contains(request, "login_user")) {
+			MemberDto login_user = (MemberDto) SessionUtils.getObject(request, "login_user");
+			 return "/board/login_page";
+		} else {
+			return "home";
+		}
+		
+	}
 	
 }

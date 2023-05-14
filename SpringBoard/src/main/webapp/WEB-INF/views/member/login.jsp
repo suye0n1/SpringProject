@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/resources/assets/css/main.css" />
 </head>
 <body>
+
 <div class="background show"> <!-- 전체 배경 -->
 	<div class="window"> <!-- 모달 팝업을 감싸주는 창 -->
 		<div class="popup"> <!-- 모달 팝업 내용 -->

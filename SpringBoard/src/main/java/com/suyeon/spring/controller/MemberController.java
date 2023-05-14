@@ -187,7 +187,7 @@ public class MemberController {
 		} catch (Exception e) {
 			dto = null;
 		}
-		return "redirect:/"; // try구문에서 if문 false 나올 때 return값을 작성 안하면 catch구문으로 이동하기 때문에 return값 작성해주기
+		return "redirect:/board/login_page"; // try구문에서 if문 false 나올 때 return값을 작성 안하면 catch구문으로 이동하기 때문에 return값 작성해주기
 	}
 
 //	@GetMapping("/logout")	//@SessionAttributes("login")이용한 로그아웃
@@ -195,6 +195,8 @@ public class MemberController {
 //		status.setComplete();
 //		return "redirect:/";
 //	}
+	
+
 	
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {

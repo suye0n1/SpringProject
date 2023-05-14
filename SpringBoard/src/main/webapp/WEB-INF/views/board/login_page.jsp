@@ -12,14 +12,38 @@
 </head>
 <body class="landing is-preload">
 	<div id="page-wrapper">
-		
+		<!-- Header -->
+				<header id="header" class="alt2">
+					<h1><a href="/">COMMUNITY</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li>
+								<a href="#" class="icon solid fa-angle-down">MENU</a>
+								<ul>
+								
+									<li><a href="/board/list?category=board_1">자유로운 이야기</a></li>
+									<li><a href="/board/list?category=board_2">나눔의 장</a></li>
+									<li>
+										<a href="#">운동 센터</a>
+										<ul>
+											<li><a href="/reservation/exercise">접수</a></li>
+										</ul>
+									</li>
+								</ul>
+							<input type="hidden" id="user_id" value="${login_user.user_id}">
+							</li>
+							<li>${login_user.user_id}<a href="/member/logout" class="button">LOG OUT</a></li>
+						</ul>
+					</nav>
+				</header>
+
 		<!-- Banner -->
 		<section id="banner">
 			<h2>APARTMENT COMMUNITY</h2>
 			<p>Another fine responsive site template freebie by HTML5 UP.</p>
 			<ul class="actions special">
 				<li><a href="/member/join" class="button">Sign Up</a></li>
-				<li><a href="/member/login" class="button">Sign in</a></li>
 			</ul>
 		</section>
 
