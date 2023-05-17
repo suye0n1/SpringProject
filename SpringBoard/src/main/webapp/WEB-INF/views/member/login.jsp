@@ -33,9 +33,9 @@
 
 	<script type="text/javascript">
 	function fn_login() {
-		var loginForm = document.loginForm;
-		var user_id = loginForm.user_id.value;
-		var passwd = loginForm.passwd.value;
+		var loginForm = document.loginForm;	
+		var user_id = loginForm.user_id.value;	
+		var passwd = loginForm.passwd.value;	
 
 		if (user_id.length == 0 || user_id == "") {
 			alert("아이디를 입력해주세요");

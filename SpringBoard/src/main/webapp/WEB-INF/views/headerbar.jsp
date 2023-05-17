@@ -28,12 +28,10 @@
 										</ul>
 									</li>
 								</ul>
-								<% MemberDto login_user = (MemberDto) request.getAttribute("login_user"); %>
-							<input type="hidden" id="user_id" name="user_id" value="<%= login_user.getUser_id() %>">
+							<input type="hidden" id="user_id" value="${login_user.user_id}">
 							</li>
-							<li><%= login_user.getUser_id() %></li>
-							<li><a href="/reservation/mypage?user_id=<%= login_user.getUser_id() %>" class="button">MY PAGE</a></li>
-							<li><a href="/member/logout" class="button">LOG OUT</a></li>
+							<li>${login_user.user_id}<a href="/member/logout" class="button">LOG OUT</a></li>
+							<li><a href="/reservation/mypage?user_id=${login_user.user_id}" class="button">MY PAGE</a></li>
 						</ul>
 					</nav>
 				</header>
