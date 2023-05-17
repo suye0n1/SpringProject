@@ -16,10 +16,9 @@ public interface BoardMapper {
 	public void write(BoardDto dto);
 	public void modify(BoardDto dto);
 	
-	//parameter값을 가져올 수 없음 ㅡ> Mybatis 쿼리에서 2개 이상의 파라미터를 주었을 떄 인자들을 인지하지 못해서 생긴 오류
+	//parameter값을 가져올 수 없음 ㅡ> Mybatis 쿼리에서 2개 이상의 파라미터를 주었을 때 인자들을 인지하지 못해서 생긴 오류
 	public int likeCheck(@Param("num") int num, @Param("user_id") String user_id);
 	public void insertLike(@Param("num") int num, @Param("user_id") String user_id);
-//	public void insertLike(BoardDto boardDto);
 	
 	public void updateLike(int num);
 	public void updateLikeCheck(@Param("num") int num, @Param("user_id") String user_id);

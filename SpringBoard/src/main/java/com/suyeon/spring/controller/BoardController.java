@@ -5,12 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
@@ -162,7 +160,7 @@ public class BoardController {
 			String datePath = str.replace("-", File.separator);	//2023-04-07을 2023\04\07로 바꿔줌
 //			경로 설정을 위해 File객체 초기화
 			File uploadPath = new File(uploadFolder, datePath);
-//			uploadPath.mkdirs();	//폴더 여러 개 생성			
+			//uploadPath.mkdirs();	//폴더 여러 개 생성			
 			//위의까지의 코드만 사용하게 되면 폴더가 이미 존재하는 상황에도 폴더를 새로 생성하게됨
 			//그래서 File클래스에서 대상 파일 혹은 디렉터리가 존재하는지 유무 반환하는 exists()메서드를 활용해야함
 			if(uploadPath.exists() == false) {
@@ -270,6 +268,7 @@ public class BoardController {
 		
 		if(SessionUtils.contains(request, "login_user")) {
 			MemberDto login_user = (MemberDto) SessionUtils.getObject(request, "login_user");
+			request.setAttribute("login_user", login_user);
 			 return "/board/login_page";
 		} else {
 			return "home";

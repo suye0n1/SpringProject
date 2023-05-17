@@ -25,7 +25,7 @@
 				<ul>
 					<li><a href="/">Home</a></li>
 				</ul>
-				
+
 			</nav>
 		</header>
 
@@ -36,12 +36,10 @@
 						<h2>회원가입</h2>
 					</div>
 					<!-- 	아이디 -->
-					<div class="id_wrap">
+					<div>
 						<div class="id_name">아이디</div>
-						<!-- 					<div class="id_input_box"> -->
 						<input class="id_input" type="text" name="user_id" required
 							maxlength="12" onkeydown="inputIdCheck()" />
-						<!-- 					</div> -->
 						<div>
 							<button class="id_ch_button" type="button"
 								onclick="fn_dbIdCheck(event)" name="dbIdCheck">중복 확인</button>
@@ -50,41 +48,31 @@
 
 					</div>
 					<!-- 	비밀번호 -->
-					<div class="password_wrap">
+					<div>
 						<div class="password_name">비밀번호</div>
-						<!-- 					<div class="password_input_box"> -->
 						<input class="pw_input" type="password" name='passwd' required
 							maxlength="15">
-						<!-- 					</div> -->
 					</div>
 					<!-- 	비밀번호 확인 -->
-					<div class="pwck_wrap">
+					<div>
 						<div class="pwck_name">비밀번호 확인</div>
-						<!-- 					<div class="pwck_input_box"> -->
 						<input class="pwck_input" type="password" name="pw_ch" required
 							maxlength="15">
-						<!-- 					</div> -->
 					</div>
 					<!-- 	 이름 -->
-					<div class="user_wrap">
+					<div>
 						<div class="user_name">이름</div>
-						<!-- 					<div class="user_input_box"> -->
 						<input class="user_input" type="text" name='name' required>
-						<!-- 					</div> -->
 					</div>
 					<!-- 	이메일 -->
 					<div class="email_wrap">
 						<div class="email_name">이메일</div>
-						<!-- 					<div class="email_input_box"> -->
 						<input class="email_input" type="text" name='email' id='email'
 							required>
-						<!-- 					</div> -->
 						<div class="email_ch_wrap">
-							<!-- 						<div class="email_ch_input_box" id="email_ch_input_box_false"> -->
-							<input class="email_ch_input" type="text" placeholder="인증번호 입력"
-								class='email_auth_key' required name='email_key'
-								disabled="disabled">
-							<!-- 						</div> -->
+							<input class="email_ch_input" name="email_number" type="text"
+								placeholder="인증번호 입력" class='email_auth_key' required
+								name='email_key' disabled="disabled">
 							<div class="email_ch_button">
 								<span>인증번호 전송</span>
 							</div>
@@ -120,8 +108,7 @@
 					</div>
 					<div><%@include file="/WEB-INF/views/member/agree.jsp"%></div>
 					<div class="join_button_wrap">
-						<button class="join_button" onclick="fn_joinMember()"
-							disabled="disabled">회원가입</button>
+						<button class="join_button" onclick="fn_joinMember()">회원가입</button>
 					</div>
 				</div>
 			</form>
@@ -151,21 +138,17 @@
 			});//end ajax
 		});
 
-		//인증번호 비교 .blur()메서드는 선택한 요소에서 포커스를 잃을 때 실행되는 이벤트 핸들러
 		$(".email_ch_input").blur(function() {
 			var inputCode = $(".email_ch_input").val(); //입력코드
 			var checkResult = $("#email_ch_input_box_warn"); //비교 결과
-			var join_button = $(".join_button");
 
 			if (inputCode == code) {
 				checkResult.html("인증번호가 일치합니다.");
 				checkResult.attr("class", "correct");
-				join_button.prop("disabled", false); //회원가입 버튼 활성화
 			} else {
 				checkResult.html("인증번호를 다시 확인해주세요.");
 				checkResult.attr("class", "incorrect");
 			}
-
 		});
 	</script>
 	<!-- 	script -->

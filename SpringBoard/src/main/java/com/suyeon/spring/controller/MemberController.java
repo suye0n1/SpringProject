@@ -43,7 +43,7 @@ public class MemberController {
 	private BCryptPasswordEncoder pwEncoder; // 객체 생성
 
 	
-	@RequestMapping(value = "join", method = RequestMethod.GET) // 1-2(2)
+	@RequestMapping(value = "join", method = RequestMethod.GET) 
 	public void loginGET() {
 	}
 
@@ -119,7 +119,6 @@ public class MemberController {
 		try {
 			MemberDto savedUser = service.login(dto.getUser_id());
 			if (savedUser != null) { // savedUser가 null이 아니고
-//				pwEncoder.matches(savedUser.getPasswd(), dto.getPasswd())로 작성하면 오류
 //				pwEncoder.matches(유저가 작성한 비밀번호, db에서 가져온 비밀번호)로 작성
 				if (pwEncoder.matches(dto.getPasswd(), savedUser.getPasswd())) {// 비밀번호가 일치하면(matches로 비교)
 					System.out.println("비밀번호 일치");

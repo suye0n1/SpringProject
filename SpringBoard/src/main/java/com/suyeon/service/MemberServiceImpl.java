@@ -15,7 +15,6 @@ public class MemberServiceImpl implements MemberService{
 	@Setter(onMethod_ = @Autowired) 
 	private MemberMapper mapper;
 	
-	//join(MemberDto dto)에 오류-@Override를 제거하라고 뜸: implements MemberService이 안되어있어서 오류
 	@Override
 	public void join(MemberDto dto) {
 		mapper.join(dto);

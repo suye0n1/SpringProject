@@ -6,6 +6,7 @@ function fn_joinMember() {
     var name = joinForm.name.value;
     var email = joinForm.email.value;
 
+
     if (user_id.length == 0 || user_id == "") {
         alert("아이디를 입력해주세요");
         joinForm.user_id.focus();
@@ -34,6 +35,8 @@ function fn_joinMember() {
         joinForm.email.focus();
         return false;
     }	
+    
+    
     alert("회원가입이 완료되었습니다.");
     joinForm.method = "post";
     joinForm.action = "/member/joinMember";

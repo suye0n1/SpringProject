@@ -32,7 +32,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	@Override
 	public BoardDto read(int num, String category) {
-		// 컨트롤러에 잇는 로직이 다 여기 들어가야 한다
+		// 컨트롤러에 잇는 로직이 다 여기 들어가야함
 		//조회수 카운트
 		mapper.viewCount(num);
 		return mapper.read(num, category);
@@ -46,9 +46,6 @@ public class BoardServiceImpl implements BoardService{
 	@Transactional
 	@Override
 	public void write(BoardDto dto) {
-//		if(dto.getImageList() == null || dto.getImageList().size() <= 0) {
-//			return;
-//		}
 		
 		try {
 		  mapper.write(dto);

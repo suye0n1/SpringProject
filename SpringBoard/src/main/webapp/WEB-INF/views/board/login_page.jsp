@@ -23,7 +23,7 @@
 				<li><a href="/member/join" class="button">Sign Up</a></li>
 			</ul>
 		</section>
-
+		
 		<!-- Main -->
 		<section id="main" class="container">
 

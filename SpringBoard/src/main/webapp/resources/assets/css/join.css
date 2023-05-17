@@ -268,11 +268,11 @@
 }
 
 /* 이메일 설정 */
-#mail_ch_input_box_false{
+#email_ch_input_box_false{
     background-color:#ebebe4;
 }
  /* 이메일 설정 */
-#mail_ch_input_box_true{
+#email_ch_input_box_true{
     background-color:white;
 }
 

@@ -336,21 +336,6 @@
 	</div>
 	<script type="text/javascript">
 		buildCalendar();
-
-		/* function submitRes(){
-			let reservationForm = document.reservation;
-			//아이디 저장
-			let loginedId = reservation.loginedId.value;
-			//선택한 날짜1
-			let date1 = reservation.date1.value;
-			//선택한 날짜2
-			let date2 = reservation.date2.value;
-			//값을 컨트롤러에 넘겨줘서 db 저장
-			alert("예약되었습니다.");
-			reservationForm.method = "post";
-			reservationForm.action = "${contextPath}/reservation/selectedDate?date1=" + encodeURIComponent(date1) + "&date2=" + encodeURIComponent(date2);
-			reservationForm.submit();
-		} */
 	</script>
 
 	<!-- Scripts -->

@@ -17,6 +17,7 @@ public class BoardDto {
 	private String category;
 	private int like_count;
 	
+	//이미지 업로드
 	private List<BoardAttachDto> imageList;
 	
 	//좋아요

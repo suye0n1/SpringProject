@@ -11,9 +11,8 @@ import com.suyeon.dto.ReservationDto;
 import com.suyeon.service.ReservationService;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
-@Log4j
+
 @RequestMapping("/reservation/*")
 @AllArgsConstructor
 @Controller
