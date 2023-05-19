@@ -50,14 +50,14 @@ public class BoardController {
 	private BoardService service;
 	
 	private BoardAttachMapper aMapper;
-	// 1.리스트
+	//리스트
 	@GetMapping("/list")
 	public void list(@RequestParam(value = "category") String category, Model model) {
 		model.addAttribute("category", category);
 		model.addAttribute("list", service.list(category));
 	}
 
-	// 2.읽기
+	//읽기, 수정
 	@GetMapping({ "/read", "/modify" })
 	public void read(BoardDto dto, BoardAttachDto adto, Model model) {
 		log.info("컨트롤러" + dto.getNum());
@@ -102,13 +102,14 @@ public class BoardController {
 		return likeCheck;
 	}
 	
-//	쓰기 화면 출력
+//쓰기 화면 출력
 	@GetMapping("/write")
 	public void write(@RequestParam("category") String category, Model model) {
 		log.info("===================");
 		model.addAttribute("category",category);
 	}
 	
+	//글쓰기
 	 @PostMapping("/write") 
 	 public String write(BoardDto dto) { 
 		 
@@ -264,11 +265,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/login_page", method = RequestMethod.GET)
-	public String home(HttpServletRequest request) {
+	public String login_page(HttpServletRequest request) {
 		
 		if(SessionUtils.contains(request, "login_user")) {
-			MemberDto login_user = (MemberDto) SessionUtils.getObject(request, "login_user");
-			request.setAttribute("login_user", login_user);
 			 return "/board/login_page";
 		} else {
 			return "home";

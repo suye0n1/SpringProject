@@ -63,10 +63,9 @@ public class MemberController {
 	@GetMapping("/idCheck")
 	public String idCheck(@RequestParam("user_id") String user_id, Model model) {
 		System.out.println("id 가져옴" + user_id);
-		int result = service.idCheck(user_id); // db에서 중복 확인
-		model.addAttribute("result", result); // xml에서 db 쿼리 확인한 값 저장하기 / 값을 가지고 idCheck.jsp로 이동
+		model.addAttribute("result", service.idCheck(user_id)); // db갑승ㄹ result에 저장
 		model.addAttribute("user_id", user_id); // user_id 저장하기
-		return "/member/idCheck"; // redirect 사용하면 컨트롤러를 거치고 안하면 jsp파일로 이동
+		return "/member/idCheck"; 
 	}
 
 	// 이메일 인증
@@ -91,7 +90,8 @@ public class MemberController {
 				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 
 		try { // MimeMessage객체 생성 //createMimeMessage()메서드는 JavaMailSender인터페이스에 정의되어있음
-			MimeMessage message = mailSender.createMimeMessage(); // true는 메시지를 사용하겠다는 의미
+			//MimeMessage: 이메일의 속성, 내용, 수신자, 발신자, 제목, 본몬, 첨부 파일 등 설정 가능(MIME 형식으로 구성)
+			MimeMessage message = mailSender.createMimeMessage(); 
 			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
 			helper.setFrom(setFrom);
 			helper.setTo(toMail);
@@ -114,15 +114,15 @@ public class MemberController {
 
 	}
 
-	@GetMapping("/login_check")
+	@PostMapping("/login_check")
 	public String login(HttpServletRequest request, MemberDto dto, Model model) throws Exception {
 		try {
 			MemberDto savedUser = service.login(dto.getUser_id());
-			if (savedUser != null) { // savedUser가 null이 아니고
-//				pwEncoder.matches(유저가 작성한 비밀번호, db에서 가져온 비밀번호)로 작성
+			if (savedUser != null) { //저장된 사용자가 존재하면
+					//pwEncoder.matches(유저가 작성한 비밀번호, db에서 가져온 비밀번호)
 				if (pwEncoder.matches(dto.getPasswd(), savedUser.getPasswd())) {// 비밀번호가 일치하면(matches로 비교)
 					System.out.println("비밀번호 일치");
-					dto.setPasswd(savedUser.getPasswd()); // 암호화된 비번을 dto에 보내기
+					dto.setPasswd(savedUser.getPasswd()); //savedUser객체에서 암호화된 비밀번호를 가져와서 dto객체에 passwd값 저장
 					SessionUtils.setObject(request, "login_user", savedUser); // 저장된 유저아이디를 login_user에 저장
 				} else { // 비밀번호가 일치하지 않으면
 					System.out.println("비밀번호 불일치");
@@ -138,7 +138,7 @@ public class MemberController {
 		} catch (Exception e) {
 			dto = null;
 		}
-		return "redirect:/board/login_page"; // try구문에서 if문 false 나올 때 return값을 작성 안하면 catch구문으로 이동하기 때문에 return값 작성해주기
+		return "redirect:/board/login_page"; 
 	}
 
 	@GetMapping("/logout")

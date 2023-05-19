@@ -56,6 +56,7 @@ function fn_dbIdCheck(event) {
     }
 }
 
+//아이디 중복확인 체크
 function inputIdCheck() {
     var joinForm = document.joinForm;
     var dbIdCheck = document.joinForm.dbIdCheck;
@@ -63,16 +64,4 @@ function inputIdCheck() {
     dbIdCheck.disabled = false;
     dbIdCheck.style.opacity = 1;
     dbIdCheck.style.cursor = "pointer";
-}
-
-$("input:checkbox").click(checkedChange);
-function checkedChange(){
-	if($(this).prop("checked")){
-		$("label[for="+this.id+"]").test("동의합니다.");
-		$("label[for="+this.id+"]").css("color", "blue");
-	}	else{
-		$("label[for="+this.id+"]").test("개인정보 동의에 체크하세요.");
-		$("label[for="+this.id+"]").css("color", "red");
-		
-	}
 }

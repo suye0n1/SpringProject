@@ -30,11 +30,7 @@ public class ReservationController {
 		service.selectedDate(dto);
 		return "redirect: /board/login_page";
 	}
-	
-	@GetMapping("/exercise")
-	public void exercise() {
-		
-	}
+
 	
 	@GetMapping("/mypage")	
 	public void mypage(@RequestParam("user_id") String user_id, Model model ) {

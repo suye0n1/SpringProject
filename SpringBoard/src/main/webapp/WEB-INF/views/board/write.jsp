@@ -103,19 +103,19 @@
 				deleteFile();
 			}
 			
-			// 		뷰에 서버로 데이터를 전송하기 위해 <form>태그 사용 그러나 이미지 첨부의 경우 화면 이동없이 첨부파일을 서버로 전송해야함
-			// 		<form>태그와 같은 역할을 해주는 FormData객체를 생성하여 첨부파일을 FormData에 저장하고 FormData 자체를 서버로 전송
+			//뷰에 서버로 데이터를 전송하기 위해 <form>태그 사용해야하지만 이미지 첨부의 경우 화면 이동없이 첨부파일을 서버로 전송해야기 때문에
+			//<form>태그와 같은 역할을 해주는 FormData객체를 생성하여 첨부파일을 FormData에 저장하고 FormData 자체를 서버로 전송
 			let formData = new FormData();
 
-			// 		fileList객체가 맞는지 확인하기 위한 과정
+			//fileList객체가 맞는지 확인하기 위한 과정
 			let fileInput = $('input[name="uploadFile"]');
 			let fileList = fileInput[0].files;
-			// 		fileList의 요소로 있는 File객체에 접근
+			//fileList의 요소로 있는 File객체에 접근
 			let fileObj = fileList[0];
 			
 			console.log("fileList:" + fileList);
 			console.log("fileObj:" + fileObj);
-			// 		File객체에 담긴 데이터가 <input>태그를 통해 선택한 파일이 맞는지 확인
+			//File객체에 담긴 데이터가 <input>태그를 통해 선택한 파일이 맞는지 확인
 			console.log("fileaName:" + fileObj.name);
 			console.log("filesize:" + fileObj.size);
 			console.log("fileType(MimeType):" + fileObj.type);
@@ -126,12 +126,11 @@
 				return false;
 			}
 			
-			
-				formData.append("uploadFile", fileList[i]);
+			formData.append("uploadFile", fileList[i]);
 			}
 			
-			// 		서버로 전송하는 코드
-			//		processData와 contentType의 경우 속성 값을 false로 해주여야만 첨부파일이 서버로 전송됨
+			//서버로 전송하는 코드
+			//processData와 contentType의 경우 속성 값을 false로 해주여야만 첨부파일이 서버로 전송됨
 			$.ajax({
 				url : '/board/upload', //서버로 요청을 보낼 url
 				processData : false, //서버로 전송할 데이터를 queryString 형태로 변환할지 여부
@@ -202,6 +201,8 @@
 			deleteFile();		
 		
 		});
+		
+		
 		//이미지 파일 삭제 메서드
 		function deleteFile(){
 			let targetFile = $(".imgDeleteBtn").data("file");

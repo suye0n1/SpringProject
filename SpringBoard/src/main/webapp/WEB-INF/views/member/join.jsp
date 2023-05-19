@@ -40,12 +40,12 @@
 						<div class="id_name">아이디</div>
 						<input class="id_input" type="text" name="user_id" required
 							maxlength="12" onkeydown="inputIdCheck()" />
+					<!-- 중복 확인 -->
 						<div>
 							<button class="id_ch_button" type="button"
 								onclick="fn_dbIdCheck(event)" name="dbIdCheck">중복 확인</button>
 							<input type="hidden" name="idDuplication" value="idUncheck" />
 						</div>
-
 					</div>
 					<!-- 	비밀번호 -->
 					<div>
@@ -106,9 +106,8 @@
 								style="width: 300px; height: 300px; margin-top: 10px; display: none"></div>
 						</div>
 					</div>
-					<div><%@include file="/WEB-INF/views/member/agree.jsp"%></div>
 					<div class="join_button_wrap">
-						<button class="join_button" onclick="fn_joinMember()">회원가입</button>
+						<button class="large button" onclick="fn_joinMember()">회원가입</button>
 					</div>
 				</div>
 			</form>

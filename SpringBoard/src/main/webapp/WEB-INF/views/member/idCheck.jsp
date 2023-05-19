@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+
 function sendCheckValue(event){
 	event.preventDefault();
 	var openJoinForm = opener.document.joinForm;	
@@ -15,6 +16,7 @@ function sendCheckValue(event){
 		openJoinForm.user_id.focus();
 		window.close();
 	}	else{
+		//아이디 중복이 아닐 경우 비활성화
 		openJoinForm.idDuplication.value = "idCheck";
 		openJoinForm.dbIdCheck.disabled = true;	//disabled: 버튼 비활성화하기
 		openJoinForm.dbIdCheck.style.opacity = 0.6;	//opacity: 요소의 불투명도
@@ -29,7 +31,7 @@ function sendCheckValue(event){
 	
 	<form name="idCheckForm">
 		<input type="text" name="user_id" value="${user_id}" disabled>
-	<c:choose>	<%--choose = switch / when = case --%>
+	<c:choose>	
 		<c:when test="${result==1}">	<%--컨트롤러에서 db값과 ${result==1}을 비교--%>
 		<p style="color:red">이미 사용 중인 아이디입니다.</p>
 		<input type="hidden" name="chResult" value="N"/>

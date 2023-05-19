@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.suyeon.dto.MemberDto" %>
+<%@ page import="com.suyeon.session.SessionUtils" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,9 +29,11 @@
 											<li><a href="/reservation/calendar">접수</a></li>
 										</ul>
 									</li>
-								</ul>
+								</ul>								
+							<!-- login_user세션 변수에서 값 가져오기 -->
 							<input type="hidden" id="user_id" value="${login_user.user_id}">
 							</li>
+							<!--	로그인한 아이디 값 -->
 							<li>${login_user.user_id}<a href="/member/logout" class="button">LOG OUT</a></li>
 							<li><a href="/reservation/mypage?user_id=${login_user.user_id}" class="button">MY PAGE</a></li>
 						</ul>
